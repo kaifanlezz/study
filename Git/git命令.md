@@ -305,3 +305,41 @@ $ git stash pop
 # 生成一个可供发布的压缩包
 $ git archive
 ```
+
+#### 删除历史记录，保留现有文件
+
+1. 创建并切换到`latest_branch`分支
+
+    ```bash
+    git checkout --orphan latest_branch
+    ```
+
+2. 添加所有文件
+
+    ```bash
+    git add -A
+    ```
+
+3. 提交更改
+
+    ```bash
+    git commit -am "删除历史版本记录，初始化仓库"
+    ```
+
+4. 删除分支
+
+    ```bash
+    BASHgit branch -D master
+    ```
+
+5. 将当前分支重命名
+
+    ```bash
+    BASHgit branch -m master
+    ```
+
+6. 强制更新存储库
+
+    ```bash
+    BASHgit push -f origin master
+    ```

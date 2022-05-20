@@ -280,21 +280,142 @@ p {
 }
 ```
 
-#### 视频
+##### 切图
+
+[前端必备技能——切图：进阶篇 - 知乎](https://zhuanlan.zhihu.com/p/22817637)
+
+##### 自适应图片
 
 ```html
-<video src="name.mp4" controls width="300" height="400">
-    autoplay loop muted 
+# 尺寸切换
+<img srcset="elva-fairy-320w.jpg 320w,
+             elva-fairy-480w.jpg 480w,
+             elva-fairy-800w.jpg 800w"
+     sizes="(max-width: 320px) 280px,
+            (max-width: 480px) 440px,
+            800px"
+     src="elva-fairy-800w.jpg" alt="Elva dressed as a fairy">
+# 分辨率切换
+<img srcset="elva-fairy-320w.jpg,
+             elva-fairy-480w.jpg 1.5x,
+             elva-fairy-640w.jpg 2x"
+     src="elva-fairy-640w.jpg" alt="Elva dressed as a fairy">
+
+```
+
+
+
+#### 视频	video
+
+```html
+<video controls width="300" height="400">
+     <source src="name.mp4" type="video/mp4"> 
+    autoplay loop muted   
     poster="预览图片.png"
     preload="none"/"auto"/"metadata"	# 缓冲：不/是/仅元数据
-	<p>
-        哈哈哈<a href="url/name.mp4">点这儿看</a>
-    </p>
+    您的浏览器不支持 HTML5 video 标签。
 </video>
 ```
 
 .webm
 
+#### 音频	audio
+
+除不支持`width` `height` 外与video相同
+
+#### iframe
+
+```html
+<iframe src="//player.bilibili.com/player.html?aid=256679698&bvid=BV1cY411F7XW&cid=724978311&page=1&high_quality=1&danmaku=0"
+        allowfullscreen="allowfullscreen"
+        width="100%" height="1080"
+        scrolling="no" frameborder="0"
+        sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts">
+</iframe>
+<!--B站嵌入代码	修改url和参数 
+	&highquality=1 默认高画质
+	&danmaku=0	关闭弹幕
+	sandbox阻止弹出页面
+-->
+```
+
+##### 安全风险与处理
+
+使用HTTPS:
+
+- HTTP的加密版本
+- 需要一个安全证书￥
+- 减少远程内容在传输过程中被篡改的机会
+- 防止嵌入式内容访问父文档中的内容
+
+使用sandbox
+
+
+
+#### 矢量图形
+
+SVG:描述矢量图形的XML语言
+
+```html
+# svg描述
+<svg version="1.1"
+     baseProfile="full"
+     width="300" height="200"
+     xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="black" />
+  <circle cx="150" cy="100" r="90" fill="blue" />
+</svg>
+```
+
+```html
+# 链接.svg图
+<img
+    src="equilateral.svg"
+    alt="triangle with all three sides equal"
+    height="87px"
+    width="100px" />
+
+```
+
+```html
+# <svg>模块
+<svg width="300" height="200">
+    <rect width="100%" height="100%" fill="green" />
+</svg>
+
+```
+
+
+
+#### 表格
+
+```html
+<table>
+  <tr>
+    <th>Animals</th>
+  </tr>
+  <tr>
+    <th>Hippopotamus</th>
+  </tr>
+  <tr>
+    <th>Horse</th>
+    <td>Mare</td>
+  </tr>
+  <tr>
+    <td>Stallion</td>
+  </tr>
+  <tr>
+    <th>Crocodile</th>
+  </tr>
+  <tr>
+    <th>Chicken</th>
+    <td>Hen</td>
+  </tr>
+  <tr>
+    <td>Rooster</td>
+  </tr>
+</table>
+```
 
 
 
@@ -303,6 +424,4 @@ p {
 
 
 
-#### 与音频
 
-#### 对象
