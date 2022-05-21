@@ -2,6 +2,12 @@
 
 Hyper Text Markup Language
 
+
+
+[TOC]
+
+
+
 ### 组成
 
 示例：`<p>我的猫咪脾气暴躁</p>`
@@ -253,9 +259,7 @@ href="../../../path/to/my/file.png"
 
 
 
-### 调试
 
-让你的HTML页面通过 [Markup Validation Service](https://validator.w3.org/)。由 W3C（制定 HTML、CSS 和其他网络技术标准的组织） 创立并维护的标记验证服务。把一个 HTML 文档加载至本网页并运行 ，网页会返回一个错误报告。
 
 
 
@@ -421,7 +425,9 @@ SVG:描述矢量图形的XML语言
 
 
 
+### 调试
 
+让你的HTML页面通过 [Markup Validation Service](https://validator.w3.org/)。由 W3C（制定 HTML、CSS 和其他网络技术标准的组织） 创立并维护的标记验证服务。把一个 HTML 文档加载至本网页并运行 ，网页会返回一个错误报告。
 
 
 

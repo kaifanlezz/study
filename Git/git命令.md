@@ -329,17 +329,17 @@ $ git archive
 4. 删除分支
 
     ```bash
-    BASHgit branch -D master
+    git branch -D master
     ```
 
 5. 将当前分支重命名
 
     ```bash
-    BASHgit branch -m master
+    git branch -m master
     ```
 
 6. 强制更新存储库
 
     ```bash
-    BASHgit push -f origin master
+    git push -f origin master
     ```
