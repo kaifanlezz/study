@@ -46,7 +46,7 @@ h1 {                    /*选择器*/
 ##### 注释
 
 ```css
-# css注释：
+// css注释：
 /*这是单行注释*/
 /*
     这是多行注释
@@ -85,10 +85,10 @@ color: tan;
 color: rebeccapurple;
 
 /* <hex-color>值 */
-color: #090;
-color: #009900;
-color: #090a;
-color: #009900aa;
+color: //090;
+color: //009900;
+color: //090a;
+color: //009900aa;
 
 /* <rgb()>值 */
 color: rgb(34, 12, 64, 0.6);
@@ -114,7 +114,263 @@ color: initial;
 color: unset;
 ```
 
+##### web安全色
 
+![QQ截图20220523211054](CSS.assets/QQ截图20220523211054.png)
+
+##### 颜色名
+
+**aqua、black、blue、fuchsia、gray、green、lime、maroon、navy、olive、purple、red、silver、teal、white、yellow。**
+
+#### 映射属性（逻辑属性）
+
+这些属性用逻辑（**logical**）和相对变化（**flow relative**）代替了像宽`width`和高`height`一样的物理属性。
+
+横向书写模式下，映射到`width`的属性被称作内联尺寸（[`inline-size`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/inline-size)）——内联维度的尺寸。而映射`height`的属性被称为块级尺寸（[`block-size`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/block-size)），这是块级维度的尺寸。
+
+
+
+
+#### 边框
+
+```css
+border-bottom: 1px;
+border-bottom: 2px dotted;
+border-bottom: medium dashed blue;
+```
+
+```css
+/* width */
+/* Keyword values */
+border-bottom-width: thin;
+border-bottom-width: medium;
+border-bottom-width: thick;
+
+/* <length> values */
+border-bottom-width: 10em;
+border-bottom-width: 3vmax;
+border-bottom-width: 6px;
+
+/* Global keywords */
+border-bottom-width: inherit;
+border-bottom-width: initial;
+border-bottom-width: unset;
+```
+
+```css
+/*style*/
+/* Keyword values */
+border-bottom-style: none;
+border-bottom-style: hidden;
+border-bottom-style: dotted;
+border-bottom-style: dashed;
+border-bottom-style: solid;
+border-bottom-style: double;
+border-bottom-style: groove;
+border-bottom-style: ridge;
+border-bottom-style: inset;
+border-bottom-style: outset;
+
+/* Global values */
+```
+
+```css
+/*color*/
+border-bottom-color: yellow;
+border-bottom-color: //F5F6F7;
+```
+
+```css
+/*圆角*/
+.box {
+  border-radius: 10px;	- 圆角半径
+  border-top-right-radius: 1em 10%;	 - 右上角水平半径为1em，垂直半径为10%
+  
+} 
+```
+
+
+
+#### 表格样式化
+
+```css
+/* spacing */
+
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border: 3px solid purple;
+}
+
+thead th:nth-child(1) {
+  width: 30%;
+}
+
+thead th:nth-child(2) {
+  width: 20%;
+}
+
+thead th:nth-child(3) {
+  width: 15%;
+}
+
+thead th:nth-child(4) {
+  width: 35%;
+}
+
+th, td {
+  padding: 20px;
+}
+
+/*标题*/
+caption {
+  font-family: 'Rock Salt', cursive;
+  padding: 20px;
+  font-style: italic;
+  caption-side: bottom;
+  color: //666;
+  text-align: right;
+  letter-spacing: 1px;
+}
+```
+
+##### 默认的样式预设值：
+
+- `<ul><ol>`元素设置[`margin`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/margin)的顶部和底部: 16px(1em) 0;和 padding-left: 40px(2.5em); （在这里注意的是浏览器默认字体大小为16px）。
+- `<li>`默认是没有设置间距的。
+- `<dl>`元素设置 margin的顶部和底部: 16px(1em) ，无内边距设定。
+- `<dd>`元素设置为： [`margin-left`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/margin-left) `40px` (`2.5em`)。
+- 在参考中提到的`<p>`元素设置 margin的顶部和底部: 16px(1em)，和其他的列表类型相同。
+
+##### 表格间距
+
+```css
+ line-height: 1.5;
+```
+
+##### 列表特定样式
+
+现在我们来看一下列表的一般间距，我们来研究一些列表具有的特定属性。 我们从三个属性开始了解，这三个属性可以在`<ul>`,`<ol>`元素上设置：
+
+- [`list-style-type`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/list-style-type) ：设置用于列表的项目符号的类型，例如无序列表的方形或圆形项目符号，或有序列表的数字，字母或罗马数字。
+- [`list-style-position`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/list-style-position) ：设置在每个项目开始之前，项目符号是出现在列表项内，还是出现在其外。(outside inside)
+- [`list-style-image`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/list-style-image) ：允许您为项目符号使用自定义图片，而不是简单的方形或圆形。
+
+##### 列表计数
+
+`start`
+
+`resersed`
+
+`value`
+
+#### 链接样式
+
+##### 默认样式
+
+- 链接具有下划线。
+- 未访问过的 (Unvisited) 的链接是蓝色的。
+- 访问过的 (Visited) 的链接是紫色的.
+- 悬停 (Hover) 在一个链接的时候鼠标的光标会变成一个小手的图标。
+- 选中 (Focus) 链接的时候，链接周围会有一个轮廓，你应该可以按 tab 来选中这个页面的链接。
+- 激活 (Active) 链接的时候会变成红色 (当你点击链接时，请尝试按住鼠标按钮。)
+
+##### 链接规则集
+
+```css
+body {
+  width: 300px;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  font-family: sans-serif;
+}
+
+p {
+  line-height: 1.4;
+}
+
+a {
+  outline: none;
+  text-decoration: none;
+  padding: 2px 1px 0;
+}
+
+a:link {
+  color: //265301;
+}
+
+a:visited {
+  color: //437A16;
+}
+
+a:focus {
+  border-bottom: 1px solid;
+  background: //BAE498;
+}
+
+a:hover {
+  border-bottom: 1px solid;
+  background: //CDFEAA;
+}
+
+a:active {
+  background: //265301;
+  color: //CDFEAA;
+}
+```
+
+#### 样式化为按钮⭐
+
+```css
+body,html {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+ul {
+  padding: 0;
+  width: 100%;
+}
+
+li {
+  display: inline;
+}
+
+a {
+  outline: none;
+  text-decoration: none;
+  display: inline-block;
+  width: 19.5%;
+  margin-right: 0.625%;
+  text-align: center;
+  line-height: 3;
+  color: black;
+}
+
+li:last-child a {
+  margin-right: 0;
+}
+
+a:link, a:visited, a:focus {
+  background: yellow;
+}
+
+a:hover {
+  background: orange;
+}
+
+a:active {
+  background: red;
+  color: white;
+}
+```
+
+
+
+
+
+### 文本
 
 #### 字体指定
 
@@ -127,13 +383,13 @@ font-family: "Goudy Bookletter 1911", sans-serif;
 /* 仅有一个通用字体族名 */
 font-family: serif;
 font-family: sans-serif;
-font-family: monospace;    #等宽
+font-family: monospace;    //等宽
 font-family: cursive;
-font-family: fantasy;	#艺术字
+font-family: fantasy;	//艺术字
 font-family: system-ui;
 font-family: emoji;
 font-family: math;
-font-family: fangsong;	#仿宋
+font-family: fangsong;	//仿宋
 
 /* 全局值 */
 font-family: inherit;
@@ -141,16 +397,70 @@ font-family: initial;
 font-family: unset;
 
 ```
+##### 网页安全字体
+
+|                 |            |                                                              |
+| :-------------- | :--------: | :----------------------------------------------------------: |
+| 字体名称        |    泛型    |                             注意                             |
+| Arial           | sans-serif | 通常认为最佳做法还是添加 Helvetica 作为 Arial 的首选替代品，尽管它们的字体面几乎相同，但 Helvetica 被认为具有更好的形状，即使Arial更广泛地可用。 |
+| Courier New     | monospace  | 某些操作系统有一个 Courier New 字体的替代（可能较旧的）版本叫Courier。 |
+| Georgia         |   serif    |                                                              |
+| Times New Roman |   serif    | 某些操作系统有一个 Times New Roman 字体的替代（可能较旧的）版本叫 Times。 |
+| Trebuchet MS    | sans-serif |     您应该小心使用这种字体——它在移动操作系统上并不广泛。     |
+| Verdana         | sans-serif |                                                              |
+
+##### 五种CSS常用字体
+
+| 名称             | 定义                                                         | 
+| :----------- | :----------------------------------------------------------- |
+| `serif`      | 有衬线的字体 （衬线一词是指字体笔画尾端的小装饰，存在于某些印刷体字体中） |
+| `sans-serif` | 没有衬线的字体。                                             |
+| `monospace`  | 每个字符具有相同宽度的字体，通常用于代码列表。               |
+| `cursive`    | 用于模拟笔迹的字体，具有流动的连接笔画。                     |
+| `fantasy`    | 用来装饰的字体                                              
+
+#### web字体
+
+font-face指定要下载的字体文件
+
+```css
+@font-face {
+  font-family: "myFont";
+  src: url("myFont.ttf");
+}
+```
+
+##### 在线字体服务
+
+ [Google Fonts](https://www.google.com/fonts)
+
+
+
+#### 字体栈
+
+```css
+p {
+  font-family: "Trebuchet MS", Verdana, sans-serif;
+}
+```
+
+
+
+
+
+
+
+
 
 #### 字体粗细
 
 ```css
 /* Keyword values */
-font-weight: normal;	#400
-font-weight: bold;		#700
+font-weight: normal;	//400
+font-weight: bold;		//700
 
 /* Keyword values relative to the parent */
-font-weight: lighter;	#比从父元素继承来的值更细
+font-weight: lighter;	//比从父元素继承来的值更细
 font-weight: bolder;
 
 /* Numeric keyword values 
@@ -182,8 +492,8 @@ font-size: larger;
 font-size: smaller;
 
 /* <length>，长度值 */
-font-size: 12px;	#像素值
-font-size: 0.8em;	#相对于继承属性的比例
+font-size: 12px;	//像素值
+font-size: 0.8em;	//相对于继承属性的比例
 /*em = 希望得到的像素大小 / 父元素字体像素大小*/
 
 /* <percentage>，百分比值 */
@@ -191,6 +501,60 @@ font-size: 80%;
 
 font-size: inherit;
 ```
+
+#### 行高
+
+```css
+line-height: 1.5;
+->字体高度的1.5倍
+```
+
+#### 字间距和单词间距
+
+```css
+p::first-line {
+  letter-spacing: 2px;
+  word-spacing: 4px;
+}
+```
+
+
+
+
+
+#### 文字阴影
+
+```css
+text-shadow: 4px 4px 5px red;
+
+/*多种阴影*/
+text-shadow: -1px -1px 1px //aaa,
+             0px 4px 1px rgba(0,0,0,0.5),
+             4px 4px 5px rgba(0,0,0,0.7),
+             0px 0px 7px rgba(0,0,0,0.4);
+```
+
+1. 阴影与原始文本的**水平偏移**，可以使用大多数的 CSS 单位 [length and size units](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units//length_and_size), 但是 px 是比较合适的。这个值必须指定。
+2. 阴影与原始文本的垂直偏移;效果基本上就像水平偏移，除了它**向上/向下**移动阴影，而不是左/右。这个值必须指定。
+3. **模糊半径** - 更高的值意味着阴影分散得更广泛。如果不包含此值，则默认为0，这意味着没有模糊。可以使用大多数的 CSS 单位 [length and size units](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units//length_and_size).
+4. 阴影的**基础颜色**，可以使用大多数的 CSS 颜色单位 [CSS color unit](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units//colors). 如果没有指定，默认为 `black`.
+
+#### 文本对齐
+
+```css
+text-align: left;
+```
+
+相对于BOX
+
+- `left`: 左对齐文本。
+- `right`: 右对齐文本。
+- `center`: 居中文字
+- `justify`: 使文本展开，改变单词之间的差距，使所有文本行的宽度相同。
+
+
+
+
 
 #### 文本修饰text-decoration
 
@@ -227,99 +591,39 @@ vertical-lr: 块流向从左向右。对应的文本方向是纵向的。
 
 - **内联**维度指的总是**文本**方向。
 
-#### 映射属性（逻辑属性）
-
-这些属性用逻辑（**logical**）和相对变化（**flow relative**）代替了像宽`width`和高`height`一样的物理属性。
-
-横向书写模式下，映射到`width`的属性被称作内联尺寸（[`inline-size`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/inline-size)）——内联维度的尺寸。而映射`height`的属性被称为块级尺寸（[`block-size`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/block-size)），这是块级维度的尺寸。
 
 
+#### 其他样式
 
+##### Font 样式:
 
-#### 边框
+- [`font-variant`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-variant): 在小型大写字母和普通文本选项之间切换。
+- [`font-kerning`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-kerning): 开启或关闭字体间距选项。
+- [`font-feature-settings`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-feature-settings): 开启或关闭不同的 [OpenType](https://en.wikipedia.org/wiki/OpenType) 字体特性。
+- [`font-variant-alternates`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-variant-alternates): 控制给定的自定义字体的替代字形的使用。
+- [`font-variant-caps`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-variant-caps): 控制大写字母替代字形的使用。
+- [`font-variant-east-asian` (en-US)](https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-east-asian): 控制东亚文字替代字形的使用, 像日语和汉语。
+- [`font-variant-ligatures`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-variant-ligatures): 控制文本中使用的连写和上下文形式。
+- [`font-variant-numeric`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-variant-numeric): 控制数字，分式和序标的替代字形的使用。
+- [`font-variant-position`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-variant-position): 控制位于上标或下标处，字号更小的替代字形的使用。
+- [`font-size-adjust`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-size-adjust): 独立于字体的实际大小尺寸，调整其可视大小尺寸。
+- [`font-stretch`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-stretch): 在给定字体的可选拉伸版本中切换。
+- [`text-underline-position`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-underline-position): 指定下划线的排版位置，通过使用 `text-decoration-line` 属性的`underline` 值。
+- [`text-rendering`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-rendering): 尝试执行一些文本渲染优化。
 
-```css
-border-bottom: 1px;
-border-bottom: 2px dotted;
-border-bottom: medium dashed blue;
-```
+##### 文本布局样式：
 
-```css
-/* width */
-/* Keyword values */
-border-bottom-width: thin;
-border-bottom-width: medium;
-border-bottom-width: thick;
-
-/* <length> values */
-border-bottom-width: 10em;
-border-bottom-width: 3vmax;
-border-bottom-width: 6px;
-
-/* Global keywords */
-border-bottom-width: inherit;
-border-bottom-width: initial;
-border-bottom-width: unset;
-```
-```css
-/*style*/
-/* Keyword values */
-border-bottom-style: none;
-border-bottom-style: hidden;
-border-bottom-style: dotted;
-border-bottom-style: dashed;
-border-bottom-style: solid;
-border-bottom-style: double;
-border-bottom-style: groove;
-border-bottom-style: ridge;
-border-bottom-style: inset;
-border-bottom-style: outset;
-
-/* Global values */
-```
-
-```css
-/*color*/
-border-bottom-color: yellow;
-border-bottom-color: #F5F6F7;
-```
-
-```css
-/*圆角*/
-.box {
-  border-radius: 10px;	- 圆角半径
-  border-top-right-radius: 1em 10%;	 - 右上角水平半径为1em，垂直半径为10%
-  
-} 
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- [`text-indent`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-indent): 指定文本内容的第一行前面应该留出多少的水平空间。
+- [`text-overflow`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-overflow): 定义如何向用户表示存在被隐藏的溢出内容。
+- [`white-space`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/white-space): 定义如何处理元素内部的空白和换行。
+- [`word-break`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/word-break): 指定是否能在单词内部换行。
+- [`direction`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/direction): 定义文本的方向 (这取决于语言，并且通常最好让HTML来处理这部分，因为它是和文本内容相关联的。)
+- [`hyphens`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/hyphens): 为支持的语言开启或关闭连字符。
+- [`line-break`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/line-break): 对东亚语言采用更强或更弱的换行规则。
+- [`text-align-last`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-align-last): 定义一个块或行的最后一行，恰好位于一个强制换行前时，如何对齐。
+- [`text-orientation`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-orientation): 定义行内文本的方向。
+- [`word-wrap`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/overflow-wrap): 指定浏览器是否可以在单词内换行以避免超出范围。
+- [`writing-mode`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/writing-mode): 定义文本行布局为水平还是垂直，以及后继文本流的方向。
 
 
 
@@ -382,8 +686,8 @@ class的选择器：
 选择文档中应用了这个类的所有物件
 
 id选择器：
-#unique { }
-以#开头
+//unique { }
+以//开头
 
 全局选择器
 article *:first-child {
@@ -395,26 +699,26 @@ article *:first-child {
 ```css
 a[title] { }
 
-# 根据一个有特定值的标签属性是否存在来选择：
+// 根据一个有特定值的标签属性是否存在来选择：
 a[href="https://example.com"] { }
 
 
-# 一个或多个属性中至少有一个和VALUE匹配
+// 一个或多个属性中至少有一个和VALUE匹配
 p[class~="special"]
 
-# 值正为value，或者开始为value，后面紧随着一个连字符。
+// 值正为value，或者开始为value，后面紧随着一个连字符。
 div[lang|="zh"]
 
-# 其值开头为value子字符串
+// 其值开头为value子字符串
 li[class^="box-"]
 
-# 值结尾为value子字符串
+// 值结尾为value子字符串
 li[class$="-box"]
 
-# 至少出现了一次value子字符串
+// 至少出现了一次value子字符串
 li[class*="box"]
 
-# 大小写不敏感 在]之前写一个 i
+// 大小写不敏感 在]之前写一个 i
 li[class^="a" i] {
     color: red;
 }
@@ -434,11 +738,11 @@ p::first-line { }
 /*伪类是开头为冒号的关键字*/
 p:first-child
 p:last-child
-p:only-child	# 没有任何兄弟元素的元素
-p:invalid	# 表示任意内容未通过验证的<input> 或其他 <form> 元素
+p:only-child	// 没有任何兄弟元素的元素
+p:invalid	// 表示任意内容未通过验证的<input> 或其他 <form> 元素
 ```
 
-##### [伪类](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors/Pseudo-classes_and_pseudo-elements#伪类)
+##### [伪类](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors/Pseudo-classes_and_pseudo-elements//伪类)
 
 | 选择器                                                       | 描述                                                         |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
@@ -493,7 +797,7 @@ p:invalid	# 表示任意内容未通过验证的<input> 或其他 <form> 元素
 | [`:target`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:target) | 匹配当前URL目标的元素（例如如果它有一个匹配当前[URL分段](https://en.wikipedia.org/wiki/Fragment_identifier)的元素）。 |
 | [`:visited`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:visited) | 匹配已访问链接。                                             |
 
-##### [伪元素](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors/Pseudo-classes_and_pseudo-elements#伪元素)
+##### [伪元素](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors/Pseudo-classes_and_pseudo-elements//伪元素)
 
 | 选择器                                                       | 描述                                                 |
 | :----------------------------------------------------------- | :--------------------------------------------------- |
@@ -541,7 +845,7 @@ p ~ img
 
 ### CSS的值与单位
 
-#### [数字，长度和百分比](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Values_and_units#数字，长度和百分比)
+#### [数字，长度和百分比](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Values_and_units//数字，长度和百分比)
 
 您可能会发现自己在CSS中使用了各种数值数据类型。 以下全部归类为数值：
 
@@ -552,7 +856,7 @@ p ~ img
 | `<dimension>`  | `<dimension>`是一个`<number>`，它有一个附加的单位，例如45deg、5s或10px。`<dimension>`是一个伞形类别，包括`<length>`、`<angle>`、`<time>`和`<resolution>`类型。 |
 | `<percentage>` | `<percentage>`表示一些其他值的一部分，例如50%。百分比值总是相对于另一个量，例如，一个元素的长度相对于其父元素的长度。 |
 
-##### [长度](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Values_and_units#长度)
+##### [长度](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Values_and_units//长度)
 
 最常见的数字类型是`<length>`，例如10px(像素)或30em。CSS中有两种类型的长度——相对长度和绝对长度。重要的是要知道它们之间的区别，以便理解他们控制的元素将变得有多大。
 
@@ -590,7 +894,7 @@ p ~ img
 
 
 
-### [位置](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Values_and_units#位置)
+### [位置](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Values_and_units//位置)
 
 `<position>` 数据类型表示一组2D坐标，用于定位一个元素，如背景图像(通过 `background-position`)。它可以使用关键字(如 `top`, `left`, `bottom`, `right`, 以及`center` )将元素与2D框的特定边界对齐，以及表示框的顶部和左侧边缘偏移量的长度。
 
@@ -763,7 +1067,7 @@ contain - 缩放到图片能完全显示出来，可能有留白
 ```css
 /*background-position:*/
 
-# top和right这样的关键字:
+// top和right这样的关键字:
 .box {
   background-image: url(star.png);
   background-repeat: no-repeat;
@@ -771,7 +1075,7 @@ contain - 缩放到图片能完全显示出来，可能有留白
 } 
 
 
-# 或者使用 长度值, and 百分比：
+// 或者使用 长度值, and 百分比：
 .box {
   background-image: url(star.png);
   background-repeat: no-repeat;
@@ -779,7 +1083,7 @@ contain - 缩放到图片能完全显示出来，可能有留白
 } 
 
 
-# 你也可以混合使用关键字，长度值以及百分比，例如：
+// 你也可以混合使用关键字，长度值以及百分比，例如：
 
 .box {
   background-image: url(star.png);
@@ -788,7 +1092,7 @@ contain - 缩放到图片能完全显示出来，可能有留白
 }
 
 
-# 最后，您还可以使用4-value语法来指示到盒子的某些边的距离——在本例中，长度单位是与其前面的值的偏移量。所以在下面的CSS中，我们将背景从顶部调整20px，从右侧调整10px:
+// 最后，您还可以使用4-value语法来指示到盒子的某些边的距离——在本例中，长度单位是与其前面的值的偏移量。所以在下面的CSS中，我们将背景从顶部调整20px，从右侧调整10px:
 .box {
   background-image: url(star.png);
   background-repeat: no-repeat;
@@ -805,4 +1109,214 @@ contain - 缩放到图片能完全显示出来，可能有留白
 - `local`: 这个值是后来添加的(它只在Internet Explorer 9+中受支持，而其他的在IE4+中受支持)，因为滚动值相当混乱，在很多情况下并不能真正实现您想要的功能。局部值将背景固定在设置的元素上，因此当您滚动元素时，背景也随之滚动。
 
 ​		[效果展示网页](https://mdn.github.io/learning-area/css/styling-boxes/backgrounds/background-attachment.html)
+
+
+
+## 排版布局
+
+默认
+
+#### 弹性盒子
+
+```css
+section {
+  display:flex
+}
+
+article {
+  flex-direction: row;/*默认弹性方向*/
+  flex-wrap: wrap;  /*换行*/
+  flex: 200px;		/*最小宽度*/
+  flex: 1;   		/*动态尺寸占比*/
+}
+```
+
+![flex_terms](CSS.assets/flex_terms.png)
+
+##### 对齐
+
+```css
+div {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+```
+
+[`align-items`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-items) 控制 flex 项在交叉轴上的位置。
+
+- 默认的值是 `stretch`，其会使所有 flex 项沿着交叉轴的方向拉伸以填充父容器。如果父容器在交叉轴方向上没有固定宽度（即高度），则所有 flex 项将变得与最长的 flex 项一样长（即高度保持一致）。我们的第一个例子在默认情况下得到相等的高度的列的原因。
+- 在上面规则中我们使用的 `center` 值会使这些项保持其原有的高度，但是会在交叉轴居中。这就是那些按钮垂直居中的原因。
+- 你也可以设置诸如 `flex-start` 或 `flex-end` 这样使 flex 项在交叉轴的开始或结束处对齐所有的值。查看 [`align-items`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-items) 了解更多。
+
+[`justify-content`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content) 控制 flex 项在主轴上的位置。
+
+- 默认值是 `flex-start`，这会使所有 flex 项都位于主轴的开始处。
+- 你也可以用 `flex-end` 来让 flex 项到结尾处。
+- `center` 在 `justify-content` 里也是可用的，可以让 flex 项在主轴居中。
+- 而我们上面用到的值 `space-around` 是很有用的——它会使所有 flex 项沿着主轴均匀地分布，在任意一端都会留有一点空间。
+- 还有一个值是 `space-between`，它和 `space-around` 非常相似，只是它不会在两端留下任何空间。
+
+##### 再排序
+
+不影响DOM
+
+```CSS
+button:first-child {
+  order: 1;
+}
+```
+
+- 所有 flex 项默认的 [`order`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/order) 值是 0。
+- order 值大的 flex 项比 order 值小的在显示顺序中更靠后。
+- 相同 order 值的 flex 项按源顺序显示。所以假如你有四个元素，其 order 值分别是2，1，1和0，那么它们的显示顺序就分别是第四，第二，第三，和第一。
+- 第三个元素显示在第二个后面是因为它们的 order 值一样，且第三个元素在源顺序中排在第二个后面。
+
+#### 网格
+
+网格是由一系列水平及垂直的线构成的一种布局模式。
+
+一个网格通常具有许多的**列（column）**与**行（row）**，以及行与行、列与列之间的间隙，这个间隙一般被称为**沟槽（gutter）**。
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: 200px 200px 200px;
+    
+  grid-template-columns: repeat(3, 1fr);	/*重复构建*/
+  grid-gap: 20px;
+}
+```
+
+##### 隐式网格-行
+
+格局内容自动创建，auto 自动调整
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 100px;
+  grid-gap: 20px;
+}
+```
+
+##### [`minmax`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/minmax) 函数
+
+为一个行/列的尺寸设置了取值范围。比如设定为 **`minmax(100px, auto)`**，那么尺寸就至少为100像素，并且如果内容尺寸大于100像素则会根据内容自动调整。
+
+##### autofill
+
+自动填满容器
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-auto-rows: minmax(100px, auto);
+  grid-gap: 20px;
+}
+```
+
+##### 基于线
+
+定义网格之后
+
+开始/结束
+
+```css
+header {
+  grid-column: 1 / 3;
+  grid-row: 1;
+}
+
+article {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+aside {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+footer {
+  grid-column: 1 / 3;
+  grid-row: 3;
+}
+```
+
+
+
+##### grid-template-areas
+
+```css
+.container {
+  display: grid;
+  grid-template-areas:
+      "header header"
+      "sidebar content"
+      "footer footer";
+  grid-template-columns: 1fr 3fr;
+  grid-gap: 20px;
+}
+
+header {
+  grid-area: header;
+}
+
+article {
+  grid-area: content;
+}
+
+aside {
+  grid-area: sidebar;
+}
+
+footer {
+  grid-area: footer;
+}
+```
+
+#### 浮动布局
+
+##### 流体布局
+
+# ……未完待续
+
+
+
+
+
+## OOCSS
+
+Object Oriented CSS
+
+建立一个叫作`media`的排布，里面包含所有的两种排布所共有的CSS——一个大致用于媒体对象的形状之类的基础类。然后我们再额外加入一个类，处理那些微小的区别，这样特定地扩展基础样式。
+
+```css
+.media {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+.media .content {
+  font-size: .8rem;
+}
+……
+```
+
+#### BEM
+
+BEM即为块级元素修饰字符（Block Element Modifier）。在BEM中，一个块，例如一个按钮、菜单或者标志，就是独立的实体。一个元素就像一个列表项或者标题一样，被绑定到它所在的块。修饰字符是标记到一个块或者元素的标识，能够改变样式或者行为。你能认出使用BEM的代码，因为代码中在CSS的类里使用了多余的一个下划线和连字符。
+
+增加的类和应用到OOCSS例子里面的相似，但是它们遵守了BEM严格的命名常规。
+
+
+
+## 后处理以进行优化
+
+如果你对加入例如许多额外的注释和空格，增大你的样式表大小有所关心的话，那么后处理会通过在生产版本中略去任何不必要的东西的方式，优化CSS。后处理解决方案中，通过这种方式实现的一个例子是[cssnano](https://cssnano.co/)。
+
+- ### [CSS Validator](https://jigsaw.w3.org/css-validator/)
 

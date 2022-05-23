@@ -1,3 +1,4 @@
+```markdown
 ctrl + / 切换编辑语法模式/预览模式
 
 ctrl + 1 ~6 标题1~6 等同于
@@ -64,4 +65,27 @@ ctrl + T 表格
 目录：[toc] + enter
 
 插入图片：直接拖动到指定位置即可或者ctrl+shift+i
+
+```
+
+## 代码块自动填充语言
+
+AutoHotKey
+
+```ahk
+#IfWinActive ahk_exe Typora.exe
+{
+    ; Ctrl+Alt+K javaCode    
+    ; crtl是  ^ , shift是 + , k是  k键
+    ^+k::addCodeJava()
+}
+addCodeJava(){
+Send,{```}
+Send,{```}
+Send,{```}
+Send,js
+Send,{Enter}
+Return
+}
+```
 
