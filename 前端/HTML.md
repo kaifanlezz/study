@@ -63,7 +63,7 @@ Hyper Text Markup Language
 
 [文档的标题](https://www.w3school.com.cn/tiy/t.asp?f=eg_html_title)
 
-<title> 标题定义文档的标题。
+`<title> 标题定义文档的标题。`
 
 [所有链接一个目标](https://www.w3school.com.cn/tiy/t.asp?f=eg_html_base)
 
@@ -103,7 +103,25 @@ Hyper Text Markup Language
 
 ```
 
+#### 语义元素
 
+| 标签           | 描述                                               |
+| :------------- | :------------------------------------------------- |
+| `<article>`    | 定义文章。                                         |
+| `<aside>`      | 定义页面内容以外的内容。                           |
+| `<details>`    | 定义用户能够查看或隐藏的额外细节。                 |
+| `<figcaption>` | 定义 <figure> 元素的标题。                         |
+| `<figure>`     | 规定自包含内容，比如图示、图表、照片、代码清单等。 |
+| `<footer>`     | 定义文档或节的页脚。                               |
+| `<header>`     | 规定文档或节的页眉。                               |
+| `<main>`       | 规定文档的主内容。                                 |
+| `<mark>`       | 定义重要的或强调的文本。                           |
+| `<nav>`        | 定义导航链接。                                     |
+| `<section>`    | 定义文档中的节。                                   |
+| `<summary>`    | 定义 <details> 元素的可见标题。                    |
+| `<time>`       | 定义日期/时间。                                    |
+
+![HTML5 语义元素](https://www.w3school.com.cn/i/ct_sem_elements.png)
 
 ### 标记文本
 
@@ -134,7 +152,40 @@ Hyper Text Markup Language
 
 `<ol></ol>`有序列表
 
+#### 表格
+
+表格由 <table> 标签来定义。每个表格均有若干行（由 <tr> 标签定义），每行被分割为若干单元格（由 <td> 标签定义）。字母 td 指表格数据（table data），即数据单元格的内容。数据单元格可以包含文本、图片、列表、段落、表单、水平线、表格等等。
+
+
+
+
+
+```css
+/* 删除项目符号以及外边距和内边距（填充） */
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+```
+
 #### 链接
+
+| 标签           | 描述                                               |
+| :------------- | :------------------------------------------------- |
+| `<article>`    | 定义文章。                                         |
+| `<aside>`      | 定义页面内容以外的内容。                           |
+| `<details>`    | 定义用户能够查看或隐藏的额外细节。                 |
+| `<figcaption>` | 定义 <figure> 元素的标题。                         |
+| `<figure>`     | 规定自包含内容，比如图示、图表、照片、代码清单等。 |
+| `<footer>`     | 定义文档或节的页脚。                               |
+| `<header>`     | 规定文档或节的页眉。                               |
+| `<main>`       | 规定文档的主内容。                                 |
+| `<mark>`       | 定义重要的或强调的文本。                           |
+| `<nav>`        | 定义导航链接。                                     |
+| `<section>`    | 定义文档中的节。                                   |
+| `<summary>`    | 定义 <details> 元素的可见标题。                    |
+| `<time>`       | 定义日期/时间。                                    |
 
 `<a href="path or url">`words`</a>`
 
@@ -152,6 +203,29 @@ Hyper Text Markup Language
 <link rel="icon" href="/pathmy-ico-file.ico" type="img/x-icon">
 ```
 
+#### 符号
+
+| 显示结果 | 描述              | 实体名称          | 实体编号 |
+| :------- | :---------------- | :---------------- | :------- |
+|          | 空格              | &nbsp;            | &#160;   |
+| <        | 小于号            | &lt;              | &#60;    |
+| >        | 大于号            | &gt;              | &#62;    |
+| &        | 和号              | &amp;             | &#38;    |
+| "        | 引号              | &quot;            | &#34;    |
+| '        | 撇号              | &apos; (IE不支持) | &#39;    |
+| ￠       | 分（cent）        | &cent;            | &#162;   |
+| £        | 镑（pound）       | &pound;           | &#163;   |
+| ¥        | 元（yen）         | &yen;             | &#165;   |
+| €        | 欧元（euro）      | &euro;            | &#8364;  |
+| §        | 小节              | &sect;            | &#167;   |
+| ©        | 版权（copyright） | &copy;            | &#169;   |
+| ®        | 注册商标          | &reg;             | &#174;   |
+| ™        | 商标              | &trade;           | &#8482;  |
+| ×        | 乘号              | &times;           | &#215;   |
+| ÷        | 除号              | &divide;          | &#247;   |
+
+ [HTML 实体符号参考手册](https://www.w3school.com.cn/tags/html_ref_entities.html)
+
 #### CSS
 
 ```html
@@ -166,6 +240,12 @@ Hyper Text Markup Language
 ```
 
 HTML `<noscript>` 标签定义了替代内容，这些内容将显示给在浏览器中禁用了脚本或浏览器不支持脚本的用户
+
+#### URL
+
+URL - Uniform Resource Locator
+
+统一资源定位器
 
 #### 超链接
 
@@ -490,6 +570,8 @@ This text contains
 
 #### 图片
 
+始终定义尺寸以防抖
+
 ```html
 <img src="path/to/file/my-img.png"
      alt="描述文本"
@@ -585,6 +667,16 @@ p {
 
 使用sandbox
 
+#### canvas
+
+javascipt绘制 通过`<script>`引入
+
+#### `<embed>` 元素
+
+所有主要浏览器均支持 `<embed>` 元素。
+
+`<embed>` 元素也可定义了 HTML 文档中的嵌入式对象。
+
 
 
 #### 矢量图形
@@ -674,6 +766,371 @@ td单元格
 |  tfoot   | 定义表格的页脚。       |
 |   col    | 定义用于表格列的属性。 |
 | colgroup | 定义表格列的组。       |
+
+### 简单布局
+
+| header  | 定义文档或节的页眉             |
+| ------- | :----------------------------- |
+| nav     | 定义导航链接的容器             |
+| section | 定义文档中的节                 |
+| article | 定义独立的自包含文章           |
+| aside   | 定义内容之外的内容（比如侧栏） |
+| footer  | 定义文档或节的页脚             |
+| details | 定义额外的细节                 |
+| summary | 定义 details 元素的标题        |
+
+```html
+<!DOCTYPE html>
+<html>
+
+<head>
+<style>
+#header {
+    background-color:black;
+    color:white;
+    text-align:center;
+    padding:5px;
+}
+#nav {
+    line-height:30px;
+    background-color:#eeeeee;
+    height:300px;
+    width:100px;
+    float:left;
+    padding:5px;	      
+}
+#section {
+    width:350px;
+    float:left;
+    padding:10px;	 	 
+}
+#footer {
+    background-color:black;
+    color:white;
+    clear:both;
+    text-align:center;
+   padding:5px;	 	 
+}
+</style>
+</head>
+
+<body>
+
+<div id="header">
+<h1>City Gallery</h1>
+</div>
+
+<div id="nav">
+London<br>
+Paris<br>
+Tokyo<br>
+</div>
+
+<div id="section">
+<h2>London</h2>
+<p>
+London is the capital city of England. It is the most populous city in the United Kingdom,
+with a metropolitan area of over 13 million inhabitants.
+</p>
+<p>
+Standing on the River Thames, London has been a major settlement for two millennia,
+its history going back to its founding by the Romans, who named it Londinium.
+</p>
+</div>
+
+<div id="footer">
+Copyright ? W3Schools.com
+</div>
+
+</body>
+</html>
+
+```
+
+
+
+### 表单
+
+#### 下拉选择菜单
+
+```html
+<select name="cars">
+<option value="volvo">Volvo</option>
+<option value="saab">Saab</option>
+<option value="fiat">Fiat</option>
+<option value="audi">Audi</option>
+</select>
+```
+
+#### 文本域
+
+```html
+<form action="/demo/html/action_page.php">
+  <textarea name="message" rows="10" cols="30">The cat was playing in the garden.</textarea>
+  <br><br>
+  <input type="submit">
+</form>
+
+```
+
+#### 按钮 Button
+
+```html
+<button type="button" onclick="alert('Hello World!')">Click Me!</button>
+
+```
+
+#### Datalist
+
+*<datalist>* 元素为 <input> 元素规定**预定义**选项列表。
+
+```html
+<form action="action_page.php">
+<input list="browsers">
+<datalist id="browsers">
+   <option value="Internet Explorer">
+   <option value="Firefox">
+   <option value="Chrome">
+   <option value="Opera">
+   <option value="Safari">
+</datalist> 
+</form>
+```
+
+
+
+### 输入
+
+#### text
+
+```html
+<form>
+ First name:<br>
+<input type="text" name="firstname">
+<br>
+ Last name:<br>
+<input type="text" name="lastname">
+</form> 
+```
+
+#### password
+
+掩码/显示
+
+```html
+<form>
+ User name:<br>
+<input type="text" name="username">
+<br>
+ User password:<br>
+<input type="password" name="psw">
+</form> 
+```
+
+
+
+#### 提交
+
+##### submit提交表单
+
+`*<input type="submit">*` 定义*提交*表单数据至*表单处理程序*的按钮。
+
+表单处理程序（form-handler）通常是包含处理输入数据的脚本的服务器页面。
+
+在表单的 action 属性中规定表单处理程序（form-handler）：
+
+```html
+<form action="action_page.php">
+First name:<br>
+<input type="text" name="firstname" value="Mickey">
+<br>
+Last name:<br>
+<input type="text" name="lastname" value="Mouse">
+<br><br>
+<input type="submit" value="Submit">
+</form> 
+```
+
+##### radio单选
+
+```html
+<form>
+<input type="radio" name="sex" value="male" checked>Male
+<br>
+<input type="radio" name="sex" value="female">Female
+</form> 
+```
+
+##### checkbox复选
+
+```html
+<form>
+<input type="checkbox" name="vehicle" value="Bike">I have a bike
+<br>
+<input type="checkbox" name="vehicle" value="Car">I have a car 
+</form> 
+```
+
+
+
+##### number
+
+![QQ截图20220524105234](HTML.assets/QQ截图20220524105234.png)
+
+| 属性      | 描述                               |
+| :-------- | :--------------------------------- |
+| disabled  | 规定输入字段应该被禁用。           |
+| max       | 规定输入字段的最大值。             |
+| maxlength | 规定输入字段的最大字符数。         |
+| min       | 规定输入字段的最小值。             |
+| pattern   | 规定通过其检查输入值的正则表达式。 |
+| readonly  | 规定输入字段为只读（无法修改）。   |
+| required  | 规定输入字段是必需的（必需填写）。 |
+| size      | 规定输入字段的宽度（以字符计）。   |
+| step      | 规定输入字段的合法数字间隔。       |
+| value     | 规定输入字段的默认值。             |
+
+##### date+日历
+
+```html
+<form>
+  Enter a date before 1980-01-01:
+  <input type="date" name="bday" max="1979-12-31"><br>
+  Enter a date after 2000-01-01:
+  <input type="date" name="bday" min="2000-01-02"><br>
+</form>
+```
+
+```html
+<!-- only month -->
+<form>
+  Birthday (month and year):
+  <input type="month" name="bdaymonth">
+</form>
+```
+
+```html
+<!-- only week -->
+<form>
+  Select a week:
+  <input type="week" name="week_year">
+</form>
+```
+
+```html
+<!-- only time -->
+<form action="/demo/demo_form.asp">
+  请选取一个时间：
+  <input type="time" name="usr_time">
+  <input type="submit">
+</form>
+```
+
+
+
+
+
+
+
+##### color+调色
+
+```html
+<form>
+  Select your favorite color:
+  <input type="color" name="favcolor">
+</form>
+```
+
+##### range+滑动条
+
+```html
+<form>
+  <input type="range" name="points" min="0" max="10">
+</form>
+```
+
+
+
+##### email
+
+```html
+<form>
+  E-mail:
+  <input type="email" name="email">
+</form>
+```
+
+##### search
+
+```html
+<form>
+  Search Google:
+  <input type="search" name="googlesearch">
+</form>
+```
+
+##### url
+
+```html
+<form>
+  Add your homepage:
+  <input type="url" name="homepage">
+</form>
+```
+
+#### Input属性
+
+```html
+value 			初始值
+readonly 		只读
+disabled 		禁用
+size			尺寸	
+maxlength		最大长度
+autocomplete	自动完成
+autofocus		在页面加载时自动获得输入焦点	
+form			所属表单 空格分隔
+formaction		处理该输入的文件URL
+formenctype		如何编码（iamge,）
+formmethod		HTTP方法（get post
+formnovalidate	不验证表单数据
+formtarget		在何处i西安市接收到的响应
+height 和 width
+list
+min 和 max		最小最大
+multiple		 接收多个？
+<input type="file" name="img" multiple="multiple" />
+
+pattern (regexp) 正则表达式
+placeholder		 输入字段预期值
+text、search、url、tel、email、password
+
+required		 必填
+step 			 数字间隔
+```
+
+
+
+### 提交
+
+HTML5 引入了应用程序缓存（Application Cache），这意味着可对 web 应用进行缓存，并可在没有因特网连接时进行访问。
+
+应用程序缓存为应用带来三个优势：
+
+1. 离线浏览 - 用户可在应用离线时使用它们
+2. 速度 - 已缓存资源加载得更快
+3. 减少服务器负载 - 浏览器将只从服务器下载更新过或更改过的资源
+
+```html
+<html manifest="demo.appcache">
+```
+
+manifest 文件有三个部分：
+
+- CACHE MANIFEST - 在此标题下列出的文件将在首次下载后进行缓存
+- NETWORK - 在此标题下列出的文件需要与服务器的连接，且不会被缓存
+- FALLBACK - 在此标题下列出的文件规定当页面无法访问时的回退页面（比如 404 页面）
+
+
 
 
 

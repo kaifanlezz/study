@@ -627,7 +627,18 @@ vertical-lr: 块流向从左向右。对应的文本方向是纵向的。
 
 
 
+### 图片样式化
 
+
+
+响应式
+
+```css
+img {
+  max-width: 100%;
+  height: auto;
+}
+```
 
 
 
@@ -900,6 +911,24 @@ p ~ img
 
 一个典型的位置值由两个值组成——第一个值水平地设置位置，第二个值垂直地设置位置。如果只指定一个轴的值，另一个轴将**默认为 `center`。**
 
+- static
+- relative	     相对于正常位置
+- fixed     	相对于视口-固定
+- absolute	   相对于最近的祖先
+- sticky	   根据用户滚动的位置定位
+
+```css
+ul {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+}
+```
+
+
+
+
+
 ### 函数
 
 ##### calc()
@@ -1112,26 +1141,47 @@ contain - 缩放到图片能完全显示出来，可能有留白
 
 
 
+## 图层
+
+z-index 堆栈顺序 正/负
+
+
+
 ## 排版布局
 
 默认
 
-#### 弹性盒子
+#### 弹性盒子flexbox
 
 ```css
 section {
-  display:flex
+  display: flex
 }
 
 article {
   flex-direction: row;/*默认弹性方向*/
-  flex-wrap: wrap;  /*换行*/
+  flex-wrap: wrap;  /*必要时换行*/
   flex: 200px;		/*最小宽度*/
   flex: 1;   		/*动态尺寸占比*/
 }
 ```
 
 ![flex_terms](CSS.assets/flex_terms.png)
+
+| 属性                                                         | 描述                                                         |
+| :----------------------------------------------------------- | :----------------------------------------------------------- |
+| [display](https://www.w3school.com.cn/cssref/pr_class_display.asp) | 规定用于 HTML 元素的盒类型。                                 |
+| [flex-direction](https://www.w3school.com.cn/cssref/pr_flex-direction.asp) | 规定弹性容器内的弹性项目的方向。                             |
+| [justify-content](https://www.w3school.com.cn/cssref/pr_justify-content.asp) | 当弹性项目没有用到主轴上的所有可用空间时，水平对齐这些项目。 |
+| [align-items](https://www.w3school.com.cn/cssref/pr_align-items.asp) | 当弹性项目没有用到主轴上的所有可用空间时，垂直对齐这些项。   |
+| [flex-wrap](https://www.w3school.com.cn/cssref/pr_flex-wrap.asp) | 规定弹性项目是否应该换行，若一条 flex 线上没有足够的空间容纳它们。 |
+| [align-content](https://www.w3school.com.cn/cssref/pr_align-content.asp) | 修改 flex-wrap 属性的行为。与 align-items 相似，但它不对齐弹性项目，而是对齐 flex 线。 |
+| [flex-flow](https://www.w3school.com.cn/cssref/pr_flex-flow.asp) | flex-direction 和 flex-wrap 的简写属性。                     |
+| [order](https://www.w3school.com.cn/cssref/pr_order.asp)     | 规定弹性项目相对于同一容器内其余弹性项目的顺序。             |
+| [align-self](https://www.w3school.com.cn/cssref/pr_align-self.asp) | 用于弹性项目。覆盖容器的 align-items 属性。                  |
+| [flex](https://www.w3school.com.cn/cssref/pr_flex.asp)       | flex-grow、flex-shrink 以及 flex-basis 属性的简写属性。      |
+
+
 
 ##### 对齐
 
@@ -1141,6 +1191,7 @@ div {
   align-items: center;
   justify-content: space-around;
 }
+
 ```
 
 [`align-items`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-items) 控制 flex 项在交叉轴上的位置。
@@ -1278,13 +1329,9 @@ footer {
 }
 ```
 
-#### 浮动布局
+---
 
-##### 流体布局
-
-# ……未完待续
-
-
+详见`布局.md`
 
 
 
@@ -1312,11 +1359,210 @@ BEM即为块级元素修饰字符（Block Element Modifier）。在BEM中，一�
 
 增加的类和应用到OOCSS例子里面的相似，但是它们遵守了BEM严格的命名常规。
 
+## 下拉菜单 .dropdown
 
+```css
+<style>
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+</style>
+
+<div class="dropdown">
+  <span>Mouse over me</span>
+  <div class="dropdown-content">
+    <p>Hello World!</p>
+  </div>
+</div>
+```
+
+## 工具提示 .tooltip
+
+## 动画
+
+#### 2D转换
+
+- `translate()`	| 平移|
+- `rotate()`          | 旋转 |
+- `scaleX()`          改变元素大小
+- `scaleY()`           
+- `scale()`
+- `skewX()`                沿X轴倾斜
+- `skewY()`
+- `skew()`
+- `matrix()` matrix(scaleX(),skewY(),skewX(),scaleY(),translateX(),translateY())
+
+```css
+div {
+  transform: translate(50px, 100px);
+}
+
+div {
+  transform: matrix(1, -0.3, 0, 1, 0, 0);
+}
+```
+
+
+
+##### CSS 3D 转换方法
+
+| 函数                                                         | 描述                                      |
+| :----------------------------------------------------------- | :---------------------------------------- |
+| matrix3d(*n*,*n*,*n*,*n*,*n*,*n*, *n*,*n*,*n*,*n*,*n*,*n*,*n*,*n*,*n*,*n*) | 定义 3D 转换，使用 16 个值的 4x4 矩阵。   |
+| translate3d(*x*,*y*,*z*)                                     | 定义 3D 转化。                            |
+| translateX(*x*)                                              | 定义 3D 转化，仅使用用于 X 轴的值。       |
+| translateY(*y*)                                              | 定义 3D 转化，仅使用用于 Y 轴的值。       |
+| translateZ(*z*)                                              | 定义 3D 转化，仅使用用于 Z 轴的值。       |
+| scale3d(*x*,*y*,*z*)                                         | 定义 3D 缩放转换。                        |
+| scaleX(*x*)                                                  | 定义 3D 缩放转换，通过给定一个 X 轴的值。 |
+| scaleY(*y*)                                                  | 定义 3D 缩放转换，通过给定一个 Y 轴的值。 |
+| scaleZ(*z*)                                                  | 定义 3D 缩放转换，通过给定一个 Z 轴的值。 |
+| rotate3d(*x*,*y*,*z*,*angle*)                                | 定义 3D 旋转。                            |
+| rotateX(*angle*)                                             | 定义沿 X 轴的 3D 旋转。                   |
+| rotateY(*angle*)                                             | 定义沿 Y 轴的 3D 旋转。                   |
+| rotateZ(*angle*)                                             | 定义沿 Z 轴的 3D 旋转。                   |
+| perspective(*n*)                                             | 定义 3D 转换元素的透视视图。              |
+
+### 过渡
+
+```css
+div:hover {
+    transition-property: width;
+  	transition-duration: 2s;
+    transition-timing-function: ease-in;
+    
+    transition-delay: 1s;
+}
+
+```
+
+| 属性                                                         | 描述                                         |
+| :----------------------------------------------------------- | :------------------------------------------- |
+| [transition](https://www.w3school.com.cn/cssref/pr_transition.asp) | 简写属性，用于将四个过渡属性设置为单一属性。 |
+| [transition-delay](https://www.w3school.com.cn/cssref/pr_transition-delay.asp) | 规定过渡效果的延迟（以秒计）。               |
+| [transition-duration](https://www.w3school.com.cn/cssref/pr_transition-duration.asp) | 规定过渡效果要持续多少秒或毫秒。             |
+| [transition-property](https://www.w3school.com.cn/cssref/pr_transition-property.asp) | 规定过渡效果所针对的 CSS 属性的名称。        |
+| [transition-timing-function](https://www.w3school.com.cn/cssref/pr_transition-timing-function.asp) | 规定过渡效果的速度曲线。                     |
+
+速度曲线transition-timing-function
+
+- `ease` - 规定过渡效果，先缓慢地开始，然后加速，然后缓慢地结束（默认）
+- `linear` - 规定从开始到结束具有相同速度的过渡效果
+- `ease-in` -规定缓慢开始的过渡效果
+- `ease-out` - 规定缓慢结束的过渡效果
+- `ease-in-out` - 规定开始和结束较慢的过渡效果
+- `cubic-bezier(n,n,n,n)` - 允许您在三次贝塞尔函数中定义自己的值
+
+
+
+### 动画
+
+```css
+div {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  animation-name: example;
+  animation-duration: 4s;
+  animation-delay: 2s;
+  animation-iteration-count: 2; /*重复次数*/
+  animation-iteration-count: infinite; /*循环*/
+  animation-direction: alternate-reverse;
+    /*播放方向*/ 
+  animation-timing-function: linear;/*曲线*/
+    animation-fill-mode: forwards;
+}
+/*from to*/
+@keyframes example {
+  from {background-color: red;}
+  to {background-color: yellow;}
+}
+/*百分比*/
+@keyframes example {
+  0%   {background-color: red;}
+  25%  {background-color: yellow;}
+  50%  {background-color: blue;}
+  100% {background-color: green;}
+}
+
+/*简写*/
+div {
+  animation: example 5s linear 2s infinite alternate;
+}
+
+```
+
+`animation-direction` 属性可接受以下值：
+
+- `normal` - 动画正常播放（向前）。默认值
+- `reverse` - 动画以反方向播放（向后）
+- `alternate` - 动画先向前播放，然后向后
+- `alternate-reverse` - 动画先向后播放，然后向前
+
+
+
+animation-fill-mode 
+
+在第一个关键帧播放之前或在最后一个关键帧播放之后的状态-可接受以下值：
+
+- `none` - 默认值。动画在执行之前或之后不会对元素应用任何样式。
+- `forwards` - 元素将保留由最后一个关键帧设置的样式值（依赖 animation-direction 和 animation-iteration-count）。
+- `backwards` - 元素将获取由第一个关键帧设置的样式值（取决于 animation-direction），并在动画延迟期间保留该值。
+- `both` - 动画会同时遵循向前和向后的规则，从而在两个方向上扩展动画属性。
 
 ## 后处理以进行优化
 
 如果你对加入例如许多额外的注释和空格，增大你的样式表大小有所关心的话，那么后处理会通过在生产版本中略去任何不必要的东西的方式，优化CSS。后处理解决方案中，通过这种方式实现的一个例子是[cssnano](https://cssnano.co/)。
 
 - ### [CSS Validator](https://jigsaw.w3.org/css-validator/)
+
+
+
+## 变量
+
+#### 全局变量
+
+```css
+:root {
+  --blue: #1e90ff;
+  --white: #ffffff;
+}
+```
+
+
+
+使用
+
+```css
+button {
+    color: var(--blue);
+}
+```
+
+#### 局部变量
+
+```css
+button {
+  --blue: #0000ff;
+  background-color: var(--white);
+  color: var(--blue);
+  border: 1px solid var(--blue);
+  padding: 5px;
+}
+```
 

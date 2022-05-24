@@ -2,7 +2,8 @@
 {
     ; Ctrl+Alt+K javaCode    
     ; crtl是  ^ , shift是 + , k是  k键
-    ^+k::addCodeJava()
+    ; 切换到英文输入法
+    ^+Q::addCodeJava()
 }
 addCodeJava(){
 Send,{```}
