@@ -53,7 +53,7 @@ Hyper Text Markup Language
     <b>粗体</b>
     <i>斜体</i>
     <u>下划线</u>
-    </p>
+</p>
 # 现在一般都用CSS完成这些操作，更加方便
 ```
 
@@ -68,6 +68,12 @@ Hyper Text Markup Language
 [所有链接一个目标](https://www.w3school.com.cn/tiy/t.asp?f=eg_html_base)
 
 链接的默认地址。
+
+```html
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+```
+
+
 
 [文档描述](https://www.w3school.com.cn/tiy/t.asp?f=eg_html_meta)
 
@@ -152,12 +158,6 @@ Hyper Text Markup Language
 
 `<ol></ol>`有序列表
 
-#### 表格
-
-表格由 <table> 标签来定义。每个表格均有若干行（由 <tr> 标签定义），每行被分割为若干单元格（由 <td> 标签定义）。字母 td 指表格数据（table data），即数据单元格的内容。数据单元格可以包含文本、图片、列表、段落、表单、水平线、表格等等。
-
-
-
 
 
 ```css
@@ -169,27 +169,25 @@ ul {
 }
 ```
 
-#### 链接
+#### 表格
 
-| 标签           | 描述                                               |
-| :------------- | :------------------------------------------------- |
-| `<article>`    | 定义文章。                                         |
-| `<aside>`      | 定义页面内容以外的内容。                           |
-| `<details>`    | 定义用户能够查看或隐藏的额外细节。                 |
-| `<figcaption>` | 定义 <figure> 元素的标题。                         |
-| `<figure>`     | 规定自包含内容，比如图示、图表、照片、代码清单等。 |
-| `<footer>`     | 定义文档或节的页脚。                               |
-| `<header>`     | 规定文档或节的页眉。                               |
-| `<main>`       | 规定文档的主内容。                                 |
-| `<mark>`       | 定义重要的或强调的文本。                           |
-| `<nav>`        | 定义导航链接。                                     |
-| `<section>`    | 定义文档中的节。                                   |
-| `<summary>`    | 定义 <details> 元素的可见标题。                    |
-| `<time>`       | 定义日期/时间。                                    |
+表格由 <table> 标签来定义。每个表格均有若干行（由 <tr> 标签定义），每行被分割为若干单元格（由 <td> 标签定义）。字母 td 指表格数据（table data），即数据单元格的内容。数据单元格可以包含文本、图片、列表、段落、表单、水平线、表格等等。
+
+`行<td>`
+
+`单元格<tr>`
+
+
+
+#### 链接
 
 `<a href="path or url">`words`</a>`
 
+
+
 #### 元数据
+
+`<meta>`
 
 ```html
 <meta charset="UTF-8">
@@ -228,9 +226,25 @@ ul {
 
 #### CSS
 
+外部
+
 ```html
 <link rel="stylesheet" href="my-css-file.css">
 ```
+
+内部
+
+```html
+<style>
+    p {
+        ---
+    }
+</style>
+```
+
+
+
+
 
 #### scripts
 
@@ -282,7 +296,7 @@ href="../../../path/to/my/file.png"
 
 ```html
 # 文档（html)片段
-# 先在that.html中为元素分配id
+# 先在index.html中为元素分配id
 <h2 id="my-id">
     something
 </h2>
@@ -301,7 +315,7 @@ href="../../../path/to/my/file.png"
 # 链接到要下载的资源而不是在浏览器中打开
 <a href="..."
    download="file-name.exe">
-	present
+	presentation
 </a>
 ```
 
@@ -310,12 +324,12 @@ href="../../../path/to/my/file.png"
 #### 注释
 
 ```html
-# html	单/多行
 <!-- 注释内容  --> 
 ```
 
+css注释：
+
 ```css
-# css注释：
 /*这是单行注释*/
 /*
     这是多行注释
@@ -323,7 +337,7 @@ href="../../../path/to/my/file.png"
 */
 ```
 
-##### 条件注释
+##### 条件注释 IE
 
 条件注释定义只有 Internet Explorer 执行的 HTML 标签。
 
@@ -335,11 +349,9 @@ href="../../../path/to/my/file.png"
 
 #### 无语义元素
 
-啥也不是，方便找到
+`<span>`		- 突出等
 
-`<span>`	- 突出等
-
-`<div>` - box等
+`<div>` 	  	- box等
 
 
 
@@ -640,9 +652,10 @@ p {
 
 ```html
 <iframe src="demo_iframe.htm" width="200" height="200" frameborder="0"></iframe>
+```
+#### B站视频嵌入
 
-
-
+```html
 <iframe src="//player.bilibili.com/player.html?aid=256679698&bvid=BV1cY411F7XW&cid=724978311&page=1&high_quality=1&danmaku=0"
         allowfullscreen="allowfullscreen"
         width="100%" height="1080"
@@ -899,7 +912,7 @@ Copyright ? W3Schools.com
 
 
 
-### 输入
+### 输入表单 form
 
 #### text
 
@@ -1030,7 +1043,7 @@ Last name:<br>
 
 
 
-
+#### 其他
 
 ##### color+调色
 
@@ -1110,7 +1123,7 @@ step 			 数字间隔
 
 
 
-### 提交
+### Cache
 
 HTML5 引入了应用程序缓存（Application Cache），这意味着可对 web 应用进行缓存，并可在没有因特网连接时进行访问。
 

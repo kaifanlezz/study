@@ -640,7 +640,12 @@ img {
 }
 ```
 
-
+```css
+img {
+position:``absolute``;
+clip:rect(``0px``,``60px``,``200px``,``0px``); /*上右下左*/
+}
+```
 
 ## 构建
 
@@ -964,7 +969,7 @@ ul {
 
 如果一个盒子对外显示为 `inline`，那么他的行为如下:
 
-- 盒子不会产生换行。
+- 盒子不会产生换行-->水平导航菜单
 -  [`width`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/width) 和 [`height`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/height) 属性将不起作用。
 - 垂直方向的内边距、外边距以及边框会被应用但是不会把其他处于 `inline` 状态的盒子推开。
 - 水平方向的内边距、外边距以及边框会被应用且会把其他处于 `inline` 状态的盒子推开。
@@ -979,7 +984,7 @@ ul {
 
 ##### display:inline-block
 
-不希望一个项切换到新行，但希望它可以设定宽度和高度，并避免上面看到的重叠。
+不希望一个项切换到新行，但希望它可以设定**宽度和高度**，并避免上面看到的重叠。
 
 margin border padding
 
@@ -987,7 +992,7 @@ margin border padding
 
 
 
-#### 溢出
+#### 溢出 overflow
 
 ```css
 overflow:
@@ -1138,6 +1143,27 @@ contain - 缩放到图片能完全显示出来，可能有留白
 - `local`: 这个值是后来添加的(它只在Internet Explorer 9+中受支持，而其他的在IE4+中受支持)，因为滚动值相当混乱，在很多情况下并不能真正实现您想要的功能。局部值将背景固定在设置的元素上，因此当您滚动元素时，背景也随之滚动。
 
 ​		[效果展示网页](https://mdn.github.io/learning-area/css/styling-boxes/backgrounds/background-attachment.html)
+
+#### 图像精灵
+
+减少服务器请求的数量并节约带宽。
+
+```css
+#home {
+  width: 46px;
+  height: 44px;
+  background: url(navsprites.gif) 0 0;
+}
+<img id="home" src="trans.gif">
+```
+
+- `<img id="home" src="trans.gif">` - 仅*定义*小的透明图像，因为 src 属性不能为空。而实际显示的图像将是我们在 CSS 中指定的**背景图像。**
+- `width: 46px; height: 44px;` - 定义我们要使用的图像部分-显示部分的大小
+- `background: url(navsprites.gif) 0 0;` - 定义背景图片及其位置**（left 0px, top 0px）**
+
+
+
+
 
 
 
