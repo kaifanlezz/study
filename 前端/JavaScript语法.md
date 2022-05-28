@@ -26,8 +26,8 @@ x = 1; <!-- x = 2;
 
 `var` 声明变量相对于`let`有两点主要区别：
 
-1. 变量没有块作用域，它们在最小函数级可见；
-2. 变量声明在函数开头处理。
+1. 变量没有**块作用域**，它们在最小函数级可见；
+2. 变量声明在函数开头处理。(提升)
 
 
 
@@ -194,6 +194,10 @@ with (obj) {
 - `Object.prototype.isPrototypeOf()`：判断当前对象是否为另一个对象的原型。
 - `Object.prototype.propertyIsEnumerable()`：判断某个属性是否可枚举。
 
+
+
+函数对象都有一个子对象 prototype对象，类是以函数的形式来定义的。prototype表示该函数的原型，也表示一个类的成员的集合。
+
 ### 函数
 
 #### 声明
@@ -211,7 +215,7 @@ function print(s) {
 #### 		匿名函数
 
 ```js
-var print = function(s) {
+var print = function() {
   console.log(s);
 };
 ```
@@ -226,13 +230,13 @@ var print = function x(){
 
 3. 构造函数
 
-可以传递任意数量的参数给`Function`构造函数，只有最后一个参数会被当做函数体，如果只有一个参数，该参数就是函数体。
+可以传递任意数量的参数给`Function`构造函数，只有最后一个**参数会被当做函数体**，如果只有一个参数，该参数就是函数体。
 
 ```js
 var add = new Function(
   'x',
   'y',
-  'return x + y'
+  'return x + y'  //body
 );
 
 // 等同于
@@ -241,7 +245,7 @@ function add(x, y) {
 }
 ```
 
-- 如果同一个函数被多次声明，后面的声明就会覆盖前面的声明。
+- 如果同一个函数被多次声明，后面的声明就会**覆盖**前面的声明。
 - 如果采用赋值语句定义函数，函数定义不会被提升，必须在定义代码之后才能调用。
 
 
@@ -278,7 +282,7 @@ f1.name // "f1"
 - 如果一定要省略靠前的参数，只有显式传入`undefined`。
 
 - 函数参数如果是原始类型的值（数值、字符串、布尔值），传递方式是**传值传递**（passes by value）。这意味着，在函数体内修改参数值，不会影响到函数外部。
-- 如果函数参数是复合类型的值（数组、对象、其他函数），传递方式是传址传递（pass by reference）。也就是说，传入函数的原始值的地址，因此在函数内部修改参数，将会影响到原始值。
+- 如果函数参数是复合类型的值（数组、对象、其他函数），传递方式是**传址传递**（pass by reference）。也就是说，传入函数的原始值的地址，因此在函数内部修改参数，将会影响到原始值。
 
 ##### arguments[]
 
@@ -311,7 +315,7 @@ f(1, 1) // 2
 
 闭包的最大用处有两个
 
-1. 可以读取外层函数内部的变量
+1. 可以读取外层函数内部的变量。
 
 2. 让这些变量始终保持在内存中，即闭包可以使得它诞生环境一直存在。
 
@@ -363,7 +367,9 @@ eval('var a = 1;');
 
 凡是使用别名执行`eval`，`eval`内部一律是全局作用域。
 
+#### call
 
+`call() 方法使用一个指定的 this` 值和单独给出的一个或多个参数来调用一个函数。
 
 ### 数组
 
@@ -379,19 +385,22 @@ var arr = ['a', 'b', 'c'];
 
 使用`delete`命令删除一个数组成员，会形成空位，并且不会影响`length`属性。
 
-##### 遍历
+#### 遍历
 
 ```js
 for (var i in a) {
   console.log(a[i]);
 }
 
-// for循环
+```
+##### for循环
+```js
 for(var i = 0; i < a.length; i++) {
   console.log(a[i]);
 }
-
-// while循环
+```
+##### while循环
+```js
 var i = 0;
 while (i < a.length) {
   console.log(a[i]);
@@ -403,6 +412,8 @@ while (i < a.length) {
 
 如果某个位置是`undefined`，遍历的时候就不会被跳过。
 
+##### slice
+
 数组的`slice`方法可以将“类似数组的对象”变成真正的数组。
 
 ```js
@@ -410,8 +421,17 @@ var arr = Array.prototype.slice.call(arrayLike);
 //转化 better
 ```
 
+##### forEach 方法
+
+对数组的每个元素执行一次给定的函数。
+
 ```js
-// forEach 方法
+//简单示例
+const array1 = ['a', 'b', 'c'];
+
+array1.forEach(element => console.log(element));
+
+//
 function logArgs() {
   Array.prototype.forEach.call(arguments, function (elem, i) {
     console.log(i + '. ' + elem);
@@ -815,9 +835,11 @@ console.log(
 
 - `console.info`是`console.log`方法的别名，用法完全一样。只不过`console.info`方法会在输出信息的前面，加上一个蓝色图标。
 
-- `console.debug`方法与`console.log`方法类似，会在控制台输出调试信息。但是，默认情况下，`console.debug`输出的信息不会显示，只有在打开显示级别在`verbose`的情况下，才会显示。
+- `console.debug`方法与`console.log`方法类似，会在控制台输出调试信息。但是，默认情况下，`console.debug`输出的信息不会显示，只有在打开显示级别在`verbose`(日志显示)的情况下，才会显示。
 
-- `warn`方法输出信息时，在最前面加一个黄色三角，表示警告；`error`方法输出信息时，在最前面加一个红色的叉，表示出错。同时，还会高亮显示输出文字和错误发生的堆栈。
+- `warn`方法输出信息时，在最前面加一个黄色三角，表示警告
+
+- `error`方法输出信息时，在最前面加一个红色的叉，表示出错。同时，还会高亮显示输出文字和错误发生的堆栈。
 
 ```js
 console.error('Error: %s (%i)', 'Server is not responding', 500)
@@ -947,8 +969,6 @@ unmonitorEvents($0, 'mousemove');
 ```
 
 上面代码表示如何停止监听。
-
-
 
 
 

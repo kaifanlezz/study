@@ -100,7 +100,7 @@ color: rgba(34.6 12 64 / 30%);
 
 /* <hsl(a)>值 */
 /*Hue, Saturation, Lightness，(alpha)
-色相 饱和度 亮度 透明度*/
+色相 饱和度 亮度 透            明度*/
 color: hsl(30, 100%, 50%, 0.6);
 color: hsla(30, 100%, 50%, 0.6);
 color: hsl(30 100% 50% / 0.6);
@@ -370,7 +370,7 @@ a:active {
 
 
 
-### 文本
+## 文本
 
 #### 字体指定
 
@@ -593,9 +593,9 @@ vertical-lr: 块流向从左向右。对应的文本方向是纵向的。
 
 
 
-#### 其他样式
 
-##### Font 样式:
+
+#### Font 样式:
 
 - [`font-variant`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-variant): 在小型大写字母和普通文本选项之间切换。
 - [`font-kerning`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-kerning): 开启或关闭字体间距选项。
@@ -611,7 +611,7 @@ vertical-lr: 块流向从左向右。对应的文本方向是纵向的。
 - [`text-underline-position`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-underline-position): 指定下划线的排版位置，通过使用 `text-decoration-line` 属性的`underline` 值。
 - [`text-rendering`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-rendering): 尝试执行一些文本渲染优化。
 
-##### 文本布局样式：
+#### 文本布局样式：
 
 - [`text-indent`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-indent): 指定文本内容的第一行前面应该留出多少的水平空间。
 - [`text-overflow`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-overflow): 定义如何向用户表示存在被隐藏的溢出内容。
@@ -627,9 +627,13 @@ vertical-lr: 块流向从左向右。对应的文本方向是纵向的。
 
 
 
-### 图片样式化
+#### 多行文本溢出-省略号
+
+![image-20220526230104305](CSS.assets/image-20220526230104305.png)
 
 
+
+## 图片样式化
 
 响应式
 
@@ -910,28 +914,6 @@ p ~ img
 
 
 
-### [位置](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Values_and_units//位置)
-
-`<position>` 数据类型表示一组2D坐标，用于定位一个元素，如背景图像(通过 `background-position`)。它可以使用关键字(如 `top`, `left`, `bottom`, `right`, 以及`center` )将元素与2D框的特定边界对齐，以及表示框的顶部和左侧边缘偏移量的长度。
-
-一个典型的位置值由两个值组成——第一个值水平地设置位置，第二个值垂直地设置位置。如果只指定一个轴的值，另一个轴将**默认为 `center`。**
-
-- static
-- relative	     相对于正常位置
-- fixed     	相对于视口-固定
-- absolute	   相对于最近的祖先
-- sticky	   根据用户滚动的位置定位
-
-```css
-ul {
-  position: -webkit-sticky; /* Safari */
-  position: sticky;
-  top: 0;
-}
-```
-
-
-
 
 
 ### 函数
@@ -952,7 +934,43 @@ ul {
 
 ## 盒模型
 
-#### 块级盒子（Block box）
+### 元素显示模式
+
+#### 块元素
+
+h1~h6	p	div	ul	ol	li
+
+- 独占一行
+- 高度、宽度、外边距、内边距都可以控制
+- 宽度默认是父级容器的100%
+- 是一个容器 内部可以放行内、块元素
+- 文字类容器内不能放块级元素p力不能放div 
+
+#### 行内元素
+
+a	strong	b	em i del s ins u span
+
+- 在一行里 一行可显示多个
+- 搞 宽 直接设置无效
+- 默认宽度就是内容宽度
+- 只能容纳文本或其他行内元素
+- a里可以放块级元素
+- 链接里不能再放链接
+
+#### 行内块 display:inline-block
+
+img input td
+
+- 相邻行内元素之间有空白缝隙
+- 一行可显示多个
+- 默认宽度是内容宽度
+- 高度，行高，内外边距都可以控制
+
+
+
+MDN:
+
+### 块级盒子（Block）
 
 一个被定义成块级的（block）盒子会表现出以下行为:
 
@@ -965,7 +983,7 @@ ul {
 
 ---
 
-#### 内联盒子（Inline box）
+### 内联盒子（Inline）
 
 如果一个盒子对外显示为 `inline`，那么他的行为如下:
 
@@ -982,7 +1000,7 @@ ul {
 
 ---
 
-##### display:inline-block
+### display:inline-block 行内块
 
 不希望一个项切换到新行，但希望它可以设定**宽度和高度**，并避免上面看到的重叠。
 
@@ -992,7 +1010,7 @@ margin border padding
 
 
 
-#### 溢出 overflow
+### 溢出 overflow
 
 ```css
 overflow:
@@ -1006,7 +1024,7 @@ overflow: auto; - 自动检测
 
 
 
-#### 断行work-break
+### 断行work-break
 
 ```
 normal
@@ -1032,7 +1050,7 @@ break-word
 
 效果是`word-break: normal` 和 `overflow-wrap: anywhere` 的合，不论 [`overflow-wrap`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/overflow-wrap)的值是多少。
 
-#### overflow-wrap
+### overflow-wrap 换行
 
 当一个不能被分开的字符串太长而不能填充其包裹盒时，为防止其溢出，浏览器是否允许这样的单词中断换行。
 
@@ -1159,7 +1177,7 @@ contain - 缩放到图片能完全显示出来，可能有留白
 
 - `<img id="home" src="trans.gif">` - 仅*定义*小的透明图像，因为 src 属性不能为空。而实际显示的图像将是我们在 CSS 中指定的**背景图像。**
 - `width: 46px; height: 44px;` - 定义我们要使用的图像部分-显示部分的大小
-- `background: url(navsprites.gif) 0 0;` - 定义背景图片及其位置**（left 0px, top 0px）**
+- **`background: url(navsprites.gif) 0 0;`** - 定义背景图片及其位置**（left 0px, top 0px）**
 
 
 
@@ -1167,7 +1185,97 @@ contain - 缩放到图片能完全显示出来，可能有留白
 
 
 
-## 图层
+
+
+## [定位](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Values_and_units//位置)
+
+定位=定位模式+边偏移
+
+不适用于浮动
+
+`<position>` 数据类型表示一组2D坐标，用于定位一个元素，如背景图像(通过 `background-position`)。它可以使用关键字(如 `top`, `left`, `bottom`, `right`, 以及`center` )将元素与2D框的特定边界对齐，以及表示框的顶部和左侧边缘偏移量的长度。
+
+一个典型的位置值由两个值组成——第一个值水平地设置位置，第二个值垂直地设置位置。如果只指定一个轴的值，另一个轴将**默认为 `center`。**
+
+- static
+- relative	     相对于正常（原来）位置
+- fixed     	相对于视口-固定
+- absolute	   相对于最近的父级元素
+- sticky	   根据用户滚动的位置定位
+
+```css
+ul {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+}
+```
+
+边偏移：上下左右
+
+`top` `bottom` `left` `right`
+
+
+
+### 相对定位
+
+相对于原来的正常位置移动
+
+但！原来的位置仍然保留，不会被占用。
+
+```css
+position: relative;
+top: 30px;	/*向下*/
+left: 59px;	   /*向右*/
+```
+
+
+
+### 绝对定位
+
+相对于父级元素的**边界**移动位置
+
+- 如果没有父级元素(or父级元素没有定位)：相对于最近一级有定位的祖先元素-->浏览器**视口**
+
+```css
+position: absolute;
+top: 100px;
+right: 20px;
+```
+
+- 父元素有定位是时 子元素不会超出父元素的边界
+- 不再占有原来位置（脱离标准流）
+
+### 子绝父相
+
+父亲一定要占有位置
+
+子级元素不需要占
+
+
+
+### 固定定位 fixed
+
+相对于浏览器视口(默认)
+
+```css
+position: fixed;
+top: 1000px;
+right: 50px;
+```
+
+相对于版心（算法）
+
+```css
+left: 50%;
+margin-left: calc(0.5*widthOfBox+10px)
+```
+
+
+
+- 浮动 绝对 固定定位  脱离标准流  不会有外边距合并（塌陷）
+
+## 图层(显示顺序)
 
 z-index 堆栈顺序 正/负
 
@@ -1361,6 +1469,10 @@ footer {
 
 
 
+
+
+
+
 ## OOCSS
 
 Object Oriented CSS
@@ -1379,11 +1491,43 @@ Object Oriented CSS
 ……
 ```
 
-#### BEM
+#### BEM 块级元素修饰
 
 BEM即为块级元素修饰字符（Block Element Modifier）。在BEM中，一个块，例如一个按钮、菜单或者标志，就是独立的实体。一个元素就像一个列表项或者标题一样，被绑定到它所在的块。修饰字符是标记到一个块或者元素的标识，能够改变样式或者行为。你能认出使用BEM的代码，因为代码中在CSS的类里使用了多余的一个下划线和连字符。
 
 增加的类和应用到OOCSS例子里面的相似，但是它们遵守了BEM严格的命名常规。
+
+
+
+## 字体图标
+
+可改变颜色，大小，减少请求
+
+#### 资源：
+
+[icomoon](http://icomoon.io)
+
+[阿里cionfont](httpL//www.iconfont.cn/)
+
+下载{.ttf .woff .eot .svg}
+
+#### 使用：
+
+复制style.css文件中的字体声明@font-face
+
+`<span>此处粘贴网站上的符号（方框）<span/>`
+
+#### 追加
+
+`import icons`上传压缩包中的selection.json
+
+添加选择
+
+下载并替换
+
+
+
+
 
 ## 下拉菜单 .dropdown
 
@@ -1418,6 +1562,33 @@ BEM即为块级元素修饰字符（Block Element Modifier）。在BEM中，一�
 ```
 
 ## 工具提示 .tooltip
+
+
+
+## 小三角
+
+box 四个border不同颜色
+
+```css
+border solid transparent
+border-top-color:pink
+span
+absolute
+```
+
+
+
+## 鼠标样式
+
+`li {cursor:pointer}`
+
+| 系统预定义属性值 | 描述 |
+| ---------------- | ---- |
+| default          | 默认 |
+| pointer          | 小手 |
+| move             | 移动 |
+| text             | 文本 |
+| not-allowed      | 禁止 |
 
 
 
@@ -1596,3 +1767,25 @@ button {
 }
 ```
 
+
+
+
+
+## 垂直对齐
+
+vertical-align
+
+![image-20220526163011297](CSS.assets/image-20220526163011297.png)
+
+默认为基线对齐
+
+```css
+img {
+    vertical-align: middle;
+}
+```
+
+基线对齐--底部缝隙解决-两种
+
+1. 改为底线对齐 
+2. 把图片转换为块级元素

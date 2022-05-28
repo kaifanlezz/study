@@ -4,6 +4,10 @@ Document Object Model
 
 ![DOM HTML 树](DOM.assets/ct_htmltree.gif)
 
+## 方法
+
+### 获取元素
+
 ```js
 getElementById("demo").innerHTML = "hello";
 getElementByTagName("p").innerHTML = "hello";
@@ -11,12 +15,16 @@ getElementByClassName("intro").innerHTML = "hello";
 var x = document.querySelectorAll("p.intro");
 ```
 
+### 改变元素
+
 | 改变元素                                   | 描述                   |
 | :----------------------------------------- | :--------------------- |
 | element.innerHTML = *new html content*     | 改变元素的 inner HTML  |
 | element.attribute = *new value*            | 改变 HTML 元素的属性值 |
 | element.setAttribute(*attribute*, *value*) | 改变 HTML 元素的属性值 |
 | element.style.property = *new style*       | 改变 HTML 元素的样式   |
+
+### 添加/删除
 
 | 添加/删除                         | 描述             |
 | :-------------------------------- | :--------------- |
@@ -26,9 +34,20 @@ var x = document.querySelectorAll("p.intro");
 | document.replaceChild(*element*)  | 替换 HTML 元素   |
 | document.write(*text*)            | 写入 HTML 输出流 |
 
-| 时间处理程序-onclick                                     | 描述                            |
-| :------------------------------------------------------- | :------------------------------ |
-| document.getElementById(id).onclick = function(){*code*} | 向 onclick 事件添加事件处理程序 |
+### 事件处理程序
+
+| 事件处理程序                                             | 描述                       |
+| :------------------------------------------------------- | :------------------------- |
+| document.getElementById(id).onclick = function(){*code*} | 向点击事件添加事件处理程序 |
+| .onmouseover                                             | 鼠标移动                   |
+| .onmouseout                                              |                            |
+| window.onload = someFunction()                           | BOM方法 页面加载时运行函数 |
+
+
+
+
+
+### 查找属性
 
 | 查找                         | 描述                                        | DOM  |
 | :--------------------------- | :------------------------------------------ | :--- |
@@ -72,3 +91,27 @@ var x = document.querySelectorAll("p.intro");
 - [document.links](https://www.w3school.com.cn/tiy/t.asp?f=eg_js_doc_anchors)
 - [document.scripts](https://www.w3school.com.cn/tiy/t.asp?f=eg_js_doc_anchors)
 - [document.title](https://www.w3school.com.cn/tiy/t.asp?f=eg_js_doc_anchors)
+
+
+
+## 元素属性
+
+### nodeType
+
+someNode.nodeType
+
+- 元素节点：1
+- 属性节点：2
+
+- 文本节点：3
+- 等，共12种取值
+
+### nodeValue
+
+文本节点的值
+
+
+
+firstChild
+
+lastChild
