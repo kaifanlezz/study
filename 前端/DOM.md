@@ -6,6 +6,8 @@ Document Object Model
 
 ## 方法
 
+渐进增强，平稳退化！
+
 ### 获取元素
 
 ```js
@@ -26,22 +28,24 @@ var x = document.querySelectorAll("p.intro");
 
 ### 添加/删除
 
-| 添加/删除                         | 描述             |
-| :-------------------------------- | :--------------- |
-| document.createElement(*element*) | 创建 HTML 元素   |
-| document.removeChild(*element*)   | 删除 HTML 元素   |
-| document.appendChild(*element*)   | 添加 HTML 元素   |
-| document.replaceChild(*element*)  | 替换 HTML 元素   |
-| document.write(*text*)            | 写入 HTML 输出流 |
+| 添加/删除                                             | 描述                                          |
+| :---------------------------------------------------- | :-------------------------------------------- |
+| document.createElement(*element*)                     | 创建 HTML 元素(仅创建，不自动添加到节点树)    |
+| document.removeChild(*element*)                       | 删除 HTML 元素                                |
+| parent.appendChild(*element*)                         | 添加 HTML 元素到parent的子元素                |
+| document.replaceChild(*element*)                      | 替换 HTML 元素                                |
+| document.write(*text*)                                | 写入 HTML 输出流（需要嵌入`<body>` 很少使用） |
+| document.insertBrfore( *newElement , targetElement* ) | 把new插入到target之前                         |
 
 ### 事件处理程序
 
-| 事件处理程序                                             | 描述                       |
-| :------------------------------------------------------- | :------------------------- |
-| document.getElementById(id).onclick = function(){*code*} | 向点击事件添加事件处理程序 |
-| .onmouseover                                             | 鼠标移动                   |
-| .onmouseout                                              |                            |
-| window.onload = someFunction()                           | BOM方法 页面加载时运行函数 |
+| 事件处理程序                                             | 描述                                        |
+| :------------------------------------------------------- | :------------------------------------------ |
+| document.getElementById(id).onclick = function(){*code*} | 向点击事件（包括enter确认）添加事件处理程序 |
+| .onmouseover                                             | 鼠标移动                                    |
+| .onmouseout                                              |                                             |
+| .onkeypress                                              | 按下键盘上任何一个键都会触发事件            |
+| window.onload = someFunction()                           | BOM方法 页面加载时运行函数                  |
 
 
 
@@ -76,6 +80,7 @@ var x = document.querySelectorAll("p.intro");
 | document.strictErrorChecking | 返回是否强制执行错误检查                    | 3    |
 | document.title               | 返回 <title> 元素                           | 1    |
 | document.URL                 | 返回文档的完整 URL                          | 1    |
+| element.nextSibling          | 元素的下一个元素                            |      |
 
 ### 可访问的对象
 
@@ -115,3 +120,54 @@ someNode.nodeType
 firstChild
 
 lastChild
+
+
+
+
+
+## onload==>addLoadEvent
+
+```js
+function addLoadEvent(func){
+    let oldonload = window.onload
+    if (typeof oldonload != 'function') {
+        window.onload = func
+    } else {
+        window.onload = function() {
+            oldonload();
+            func();
+        }
+    }
+    
+}
+```
+
+
+
+## 改变元素样式
+
+通过给元素添加类标签，和对类标签style设置
+
+```js
+  function addClass(element,value) {
+    if (!element.className) {
+      element.className = value;
+    } else {
+      // let old = element.className
+      // old += " ";
+      // old += value;
+      // element.className = old;
+      element.className += " "+value;
+    }
+  }
+   
+let a = getElementById("id")      
+addClass(a,targetClass)
+      
+//<style>
+    .targetClass {
+        //you wanna
+    }
+</style>
+```
+

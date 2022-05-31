@@ -651,7 +651,7 @@ clip:rect(``0px``,``60px``,``200px``,``0px``); /*上右下左*/
 }
 ```
 
-## 构建
+## 选择
 
 ### 层叠 优先级 继承
 
@@ -706,8 +706,8 @@ class的选择器：
 选择文档中应用了这个类的所有物件
 
 id选择器：
-//unique { }
-以//开头
+#unique { }
+以#开头
 
 全局选择器
 article *:first-child {
@@ -738,11 +738,43 @@ li[class$="-box"]
 // 至少出现了一次value子字符串
 li[class*="box"]
 
-// 大小写不敏感 在]之前写一个 i
+// 大小写不敏感 在 ] 之前写一个 i
 li[class^="a" i] {
     color: red;
 }
 ```
+
+
+
+#### 关系选择器
+
+##### 后代选择器
+
+典型用单个空格（` `）字符——组合两个选择器，比如，第二个选择器匹配的元素被选择，如果他们有一个祖先（父亲，父亲的父亲，父亲的父亲的父亲，等等）元素匹配第一个选择器
+
+##### 子代关系选择器
+
+大于号（`>`），只会在选择器选中直接子元素的时候匹配。继承关系上**更远**的后代则**不**会匹配。例如，只选中作为`<article>`的直接子元素的`<p>`元素：
+
+`article > p`
+
+##### + 邻接兄弟选择器
+
+（`+`）用来选中恰好处于另一个在继承关系上同级的元素旁边的物件。例如，选中所有紧随`<p>`元素之后的`<img>`元素：
+
+```css
+p + img
+```
+
+##### ~ 通用兄弟
+
+如果你想选中一个元素的兄弟元素，即使它们不直接相邻，你还是可以使用通用兄弟关系选择器（`~`）。要选中所有的`<p>`元素**后*** *任何地方*的`<img>`元素，我们会这样做：
+
+```css
+p ~ img
+```
+
+
 
 #### 伪类与伪元素选择器
 
@@ -795,7 +827,7 @@ p:invalid	// 表示任意内容未通过验证的<input> 或其他 <form> 元素
 | [`:local-link` (en-US)](https://developer.mozilla.org/en-US/docs/Web/CSS/:local-link) | 匹配指向和当前文档同一网站页面的链接。                       |
 | [`:is()`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:is) | 匹配传入的选择器列表中的任何选择器。                         |
 | [`:not`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:not) | 匹配作为值传入自身的选择器未匹配的物件。                     |
-| [`:nth-child`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:nth-child) | 匹配一列兄弟元素中的元素——兄弟元素按照an+b形式的式子进行匹配（比如2n+1匹配元素1、3、5、7等。即所有的奇数个）。 |
+| [`:nth-child`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:nth-child)(an+b) | 匹配一列兄弟元素中的元素——兄弟元素按照an+b形式的式子进行匹配（比如2n+1匹配元素1、3、5、7等。即所有的奇数个）。 |
 | [`:nth-of-type`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:nth-of-type) | 匹配某种类型的一列兄弟元素（比如，`<p>`元素）——兄弟元素按照an+b形式的式子进行匹配（比如2n+1匹配元素1、3、5、7等。即所有的奇数个）。 |
 | [`:nth-last-child`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:nth-last-child) | 匹配一列兄弟元素，从后往前倒数。兄弟元素按照an+b形式的式子进行匹配（比如2n+1匹配按照顺序来的最后一个元素，然后往前两个，再往前两个，诸如此类。从后往前数的所有奇数个）。 |
 | [`:nth-last-of-type`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:nth-last-of-type) | 匹配某种类型的一列兄弟元素（比如，`<p>`元素），从后往前倒数。兄弟元素按照an+b形式的式子进行匹配（比如2n+1匹配按照顺序来的最后一个元素，然后往前两个，再往前两个，诸如此类。从后往前数的所有奇数个）。 |
@@ -828,36 +860,6 @@ p:invalid	// 表示任意内容未通过验证的<input> 或其他 <form> 元素
 | [`::grammar-error`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/::grammar-error) | 匹配文档中包含了浏览器标记的语法错误的那部分。       |
 | [`::selection`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/::selection) | 匹配文档中被选择的那部分。                           |
 | [`::spelling-error`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/::spelling-error) | 匹配文档中包含了浏览器标记的拼写错误的那部分。       |
-
-
-
-#### 关系选择器
-
-##### 后代选择器
-
-典型用单个空格（` `）字符——组合两个选择器，比如，第二个选择器匹配的元素被选择，如果他们有一个祖先（父亲，父亲的父亲，父亲的父亲的父亲，等等）元素匹配第一个选择器
-
-##### 子代关系选择器
-
-大于号（`>`），只会在选择器选中直接子元素的时候匹配。继承关系上更远的后代则不会匹配。例如，只选中作为`<article>`的直接子元素的`<p>`元素：
-
-`article > p`
-
-##### 邻接兄弟选择器
-
-（`+`）用来选中恰好处于另一个在继承关系上同级的元素旁边的物件。例如，选中所有紧随`<p>`元素之后的`<img>`元素：
-
-```css
-p + img
-```
-
-##### 通用兄弟
-
-如果你想选中一个元素的兄弟元素，即使它们不直接相邻，你还是可以使用通用兄弟关系选择器（`~`）。要选中所有的`<p>`元素后*任何地方*的`<img>`元素，我们会这样做：
-
-```css
-p ~ img
-```
 
 
 
@@ -913,20 +915,6 @@ p ~ img
 | `vmax` | 视图大尺寸的1%                                               |
 
 
-
-
-
-### 函数
-
-##### calc()
-
-例：`calc()`使框宽为20% + 100px。20%是根据父容器.wrapper的宽度来计算的，因此如果宽度改变，它也会改变。我们不能事先做这个计算，因为我们不知道父类的20%是多少，所以我们使用`calc()`来告诉浏览器为我们做这个计算。
-
-```css
-.box {
-  width: calc(20% + 100px);
-}
-```
 
 
 
@@ -1570,10 +1558,16 @@ BEM即为块级元素修饰字符（Block Element Modifier）。在BEM中，一�
 box 四个border不同颜色
 
 ```css
-border solid transparent
+border: 10px solid transparent;
 border-top-color:pink
-span
-absolute
+```
+
+直角三角形
+
+```css
+border:50px solid transparent;
+border-bottom-width:0;
+border-right-color:deeppink;
 ```
 
 
@@ -1589,6 +1583,20 @@ absolute
 | move             | 移动 |
 | text             | 文本 |
 | not-allowed      | 禁止 |
+
+### 函数
+
+##### calc()
+
+例：`calc()`使框宽为20% + 100px。20%是根据父容器.wrapper的宽度来计算的，因此如果宽度改变，它也会改变。我们不能事先做这个计算，因为我们不知道父类的20%是多少，所以我们使用`calc()`来告诉浏览器为我们做这个计算。
+
+```css
+.box {
+  width: calc(20% + 100px);
+}
+```
+
+
 
 
 

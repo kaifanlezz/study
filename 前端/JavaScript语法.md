@@ -976,3 +976,44 @@ unmonitorEvents($0, 'mousemove');
 - `copy(object)`：复制特定 DOM 元素到剪贴板。
 - `dir(object)`：显示特定对象的所有属性，是`console.dir`方法的别名。
 - `dirxml(object)`：显示特定对象的 XML 形式，是`console.dirxml`方法的别名。
+
+
+
+### 时间
+
+`setTimeout("name",interval)`
+
+经过一段时间后再运行函数，函数名以字符串传入第一个参数
+
+`clearTimeout("name")`
+
+`parseInt(element.style.yop)`将字符串"20px"转化为20(int)
+
+
+
+### 动画
+
+再一定时间间隔下重设元素的定位（top right）并检查是否到达终点
+
+
+
+### 预览
+
+精灵图
+
+```css
+<div>
+overflow = hidden;
+position=relative;
+width:200px;
+height:200px;
+</div>
+见CSS精灵图
+```
+
+
+
+### 压缩脚本
+
+- [谷歌 Closure Complier](https://closure-complier.appspot.com/home)
+- [雅虎 YUI Compressor](http://developer.yahoo.com/yui/compressor)
