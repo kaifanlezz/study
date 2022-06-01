@@ -14,6 +14,27 @@ vue一定程度上参考了mvvm
 
 
 
+### 组件
+
+组件本质上是一个具有预定义选项的实例。在 Vue 中注册组件很简单：如对 `app` 对象所做的那样创建一个组件对象，并将其定义在父级组件的 `components` 选项中：
+
+```js
+const TodoItem = {
+  template: `<li>This is a todo</li>`
+}
+
+// 创建 Vue 应用
+const app = Vue.createApp({
+  components: {
+    TodoItem // 注册一个新组件
+  },
+  ... // 组件的其它 property
+})
+
+// 挂载 Vue 应用
+app.mount(...)
+```
+
 
 
 ## VUE2
@@ -72,27 +93,6 @@ app.$mount("root")	//挂载
 
 
 
-### 组件
-
-组件本质上是一个具有预定义选项的实例。在 Vue 中注册组件很简单：如对 `app` 对象所做的那样创建一个组件对象，并将其定义在父级组件的 `components` 选项中：
-
-```js
-const TodoItem = {
-  template: `<li>This is a todo</li>`
-}
-
-// 创建 Vue 应用
-const app = Vue.createApp({
-  components: {
-    TodoItem // 注册一个新组件
-  },
-  ... // 组件的其它 property
-})
-
-// 挂载 Vue 应用
-app.mount(...)
-```
-
 
 
 ### 生命周期钩子
@@ -120,7 +120,7 @@ new Vue({
 
 #### destroyed
 
-<img src="https://cn.vuejs.org/images/lifecycle.png" alt="Vue 实例生命周期" style="zoom: 50%;" />
+<img src="Vue.js.assets/生命周期-16540495143702.png" alt="生命周期" style="zoom:67%;" />
 
 ### Template 模板
 
@@ -236,6 +236,64 @@ var app5 = new Vue({
 <!-- 动态参数的缩写 (2.6.0+) -->
 <a @[event]="doSomething"> ... </a>
 ```
+
+
+
+#### v-cloak	
+
+配合`display:none;`
+
+防止未经解析的模板渲染到页面上
+
+
+
+#### v-pre
+
+跳过所在节点的vue解析渲染，维持原html悬念然方法，跳过-->>加速编译
+
+
+
+### 自定义指令
+
+#### 对象形式
+```js
+directives:{
+	instra(domElement,valueBinding){
+        //绑定的DOM	指令指定的value
+	domElement.focus ()
+    }
+}
+//执行：1.成功绑定（而不是成功渲染）	2.重新解析
+
+```
+#### 对象形式
+```js
+instra:{
+    //成功绑定
+    bind(){},
+        //渲染到页面
+    inserted(){},
+        //更新
+    update(){},
+}
+```
+
+#### 全局指令 
+
+```js
+Vue.instra('fbind',{
+    bind(e,b){
+        
+    },
+    inserted(e,b){
+        
+    }
+})
+```
+
+
+
+
 
 ### js 表达式
 
@@ -610,4 +668,127 @@ key是虚拟DOM对象的标识，当数据发生变化时，Vue会根据【新�
 -->>筛选/搜索
 
 
+
+### 组件
+
+1. 创建组件
+
+```js
+const top = Vue.extend({
+    template:`
+    <div>
+    </div>`
+    //不写el 由vm分配
+    //函数式DATA 
+    data(){
+        return{
+            a:"b",
+            
+            
+        }
+    }
+})
+```
+
+
+
+2. 注册组件
+
+```js
+new Vue({	//局部注册,只能用于当前vm实例
+    el:"#root",
+    conponents:{
+        ‘组件名’：组件
+    }
+})
+
+
+Vue.component('组件名',组件)	//全局注册
+```
+
+
+
+3. 使用组件
+
+​	
+
+
+
+1. 关于组件名:
+
+- 一个单词组成：
+    - 第一种写法(首字母小写)：school
+    - 第二种写法(首字母大写)：School
+
+- 多个单词组成：
+
+    - 第一种写法(kebab-case命名)：my-school
+
+    - 第二种写法(CamelCase命名)：MySchool (需要Vue脚手架支持)
+
+- 备注：
+
+    - (1).组件名尽可能回避HTML中已有的元素名称，例如：h2、H2都不行。
+
+    - (2).可以使用`name配置项`指定组件在开发者工具中呈现的名字。--在创建组件时指定name
+
+2. 关于组件标签:
+
+- 第一种写法：`<school></school>`
+
+- 第二种写法：`<school/>`
+
+- 备注：不用使用脚手架时，<school/>会导致后续组件不能渲染。
+
+
+
+3. 一个简写方式：
+
+- `const school = Vue.extend({options})` 可简写为：`const school = {options}`
+
+
+
+#### 组件嵌套
+
+#### 组件实质
+
+构造函数`VueComponent`
+
+每次使用组件，Vue都会自动调用一个全新的`VueComponent`
+
+
+
+this的指向
+
+(1)组件配置中：
+
+data函数、methods中的函数、watch中的函数、computed中的函数 它们的this均是【`VueComponent`实例对象vc功能与vm相同】。
+
+(2)new Vue(options)配置中：
+
+data函数、methods中的函数、watch中的函数、computed中的函数 它们的this均是【`Vue`实例对象vm】。
+
+
+
+1.一个重要的内置关系：VueComponent.prototype.__proto__ === Vue.prototype
+
+2.为什么要有这个关系：让组件实例对象（vc）可以访问到 Vue原型上的属性、方法。
+
+
+
+
+
+## CLI
+
+command line interface	命令行接口工具--脚手架
+
+### webpack配置
+webpack.config.js
+
+####关闭语法检查--lintOnSave
+```js
+  lintOnSave:false
+```
+
+[vue.config.js]([配置参考 | Vue CLI (vuejs.org)](https://cli.vuejs.org/zh/config/))
 
