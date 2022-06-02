@@ -116,7 +116,7 @@ color: unset;
 
 ##### web安全色
 
-![QQ截图20220523211054](CSS.assets/QQ截图20220523211054.png)
+![QQ截图20220523211054](mdAssets/CSS.asset/QQ截图20220523211054.png)
 
 ##### 颜色名
 
@@ -629,7 +629,7 @@ vertical-lr: 块流向从左向右。对应的文本方向是纵向的。
 
 #### 多行文本溢出-省略号
 
-![image-20220526230104305](CSS.assets/image-20220526230104305.png)
+![image-20220526230104305](mdAssets/CSS.asset/image-20220526230104305.png)
 
 
 
@@ -994,7 +994,7 @@ MDN:
 
 margin border padding
 
-![box-model-devtools](CSS.assets/box-model-devtools.png)
+![box-model-devtools](mdAssets/CSS.asset/box-model-devtools.png)
 
 
 
@@ -1288,7 +1288,7 @@ article {
 }
 ```
 
-![flex_terms](CSS.assets/flex_terms.png)
+![flex_terms](mdAssets/CSS.asset/flex_terms.png)
 
 | 属性                                                         | 描述                                                         |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
@@ -1783,7 +1783,7 @@ button {
 
 vertical-align
 
-![image-20220526163011297](CSS.assets/image-20220526163011297.png)
+![image-20220526163011297](mdAssets/CSS.asset/image-20220526163011297.png)
 
 默认为基线对齐
 

@@ -28,7 +28,7 @@
 
 ## vue.config.js配置文件
 
-1. 使用vue inspect > output.js可以查看到Vue脚手架的默认配置。
+1. 使用vue inspect > `$bash output.js`可以查看到Vue脚手架的默认配置。
 2. 使用vue.config.js可以对脚手架进行个性化定制，详情见：https://cli.vuejs.org/zh
 
 ## ref属性
@@ -63,7 +63,7 @@
         }
         ```
 
-    > 备注：props是只读的，Vue底层会监测你对props的修改，如果进行了修改，就会发出警告，若业务需求确实需要修改，那么请复制props的内容到data中一份，然后去修改data中的数据。
+    > 备注：props是只读的，Vue底层会监测你对props的修改，如果进行了修改，就会发出警告，若业务需求确实需要修改，那么请复制props的内容到data中一份(不同名)，然后去修改data中的数据。
 
 ## mixin(混入)
 
@@ -83,12 +83,18 @@
 
     第二步使用混入：
 
+    `import {hunhe} from 'mixin.js'`
+    
     ​	全局混入：```Vue.mixin(xxx)```
     ​	局部混入：```mixins:['xxx']	```
+    
+    > 重复的以自身为主
+    >
+    > 生命周期钩子则不会覆盖，都有效
 
 ## 插件
 
-1. 功能：用于增强Vue
+1. 功能：用于增强Vue--全局方法
 
 2. 本质：包含install方法的一个对象，install的第一个参数是Vue，第二个以后的参数是插件使用者传递的数据。
 
@@ -111,11 +117,16 @@
     }
     ```
 
-4. 使用插件：```Vue.use()```
+4. 使用插件：
+
+    ```js
+    import plugins from './plugins'
+    Vue.use(plugin,parameter1,,,,)
+    ```
 
 ## scoped样式
 
-1. 作用：让样式在局部生效，防止冲突。
+1. 作用：让样式在局部生效(当前组件），防止冲突。
 2. 写法：```<style scoped>```
 
 ## 总结TodoList案例

@@ -116,7 +116,7 @@ Hyper Text Markup Language
 | `<article>`    | 定义文章。                                         |
 | `<aside>`      | 定义页面内容以外的内容。                           |
 | `<details>`    | 定义用户能够查看或隐藏的额外细节。                 |
-| `<figcaption>` | 定义 <figure> 元素的标题。                         |
+| `<figcaption>` | 定义 `<figure>` 元素的标题。                       |
 | `<figure>`     | 规定自包含内容，比如图示、图表、照片、代码清单等。 |
 | `<footer>`     | 定义文档或节的页脚。                               |
 | `<header>`     | 规定文档或节的页眉。                               |
@@ -124,10 +124,17 @@ Hyper Text Markup Language
 | `<mark>`       | 定义重要的或强调的文本。                           |
 | `<nav>`        | 定义导航链接。                                     |
 | `<section>`    | 定义文档中的节。                                   |
-| `<summary>`    | 定义 <details> 元素的可见标题。                    |
+| `<summary>`    | 定义 `<details>` 元素的可见标题。                  |
 | `<time>`       | 定义日期/时间。                                    |
 
-![HTML5 语义元素](https://www.w3school.com.cn/i/ct_sem_elements.png)
+#### 无语义元素
+
+`<span>`		- 突出等
+
+`<div>` 	  	- box等
+
+
+![HTML5 语义元素](mdAssets/HTML.asset/ct_sem_elements.png)
 
 ### 标记文本
 
@@ -171,7 +178,9 @@ ul {
 
 #### 表格
 
-表格由 <table> 标签来定义。每个表格均有若干行（由 <tr> 标签定义），每行被分割为若干单元格（由 <td> 标签定义）。字母 td 指表格数据（table data），即数据单元格的内容。数据单元格可以包含文本、图片、列表、段落、表单、水平线、表格等等。
+表格由 `<table>` 标签来定义。每个表格均有若干行（由 `<tr>` 标签定义），每行被分割为若干单元格（由 <td> 标签定义）。字母 td 指表格数据（table data），即数据单元格的内容。数据单元格可以包含文本、图片、列表、段落、表单、水平线、表格等等。
+
+`表格<table>`
 
 `行<td>`
 
@@ -181,7 +190,7 @@ ul {
 
 #### 链接
 
-`<a href="path or url">`words`</a>`
+`<a href="path or url">`wordsToDisplay`</a>`
 
 
 
@@ -196,6 +205,8 @@ ul {
 ```
 
 #### 图标
+
+浏览器默认会寻找根目录下的`favicon.ico`
 
 ```html
 <link rel="icon" href="/pathmy-ico-file.ico" type="img/x-icon">
@@ -237,7 +248,7 @@ ul {
 ```html
 <style>
     p {
-        ---
+        #---
     }
 </style>
 ```
@@ -284,8 +295,8 @@ _top：在当前窗体打开链接，并替换当前的整个窗体(框架页)
 <p>
     创建一个 指向百度的超链接
     <a href="www.baidu.com" target="-blank" title="baidu logo">
-        <img src="my-img-file .png"
-             </a>
+        <img src="my-img-file .png">
+     </a>
 </p>
 ```
 
@@ -347,19 +358,13 @@ css注释：
 <![endif]-->
 ```
 
-#### 无语义元素
-
-`<span>`		- 突出等
-
-`<div>` 	  	- box等
-
 
 
 #### 换行
 
 `<br />`空行
 
-<br />
+`<br />`
 
 再不产生新段落的情况下换行
 
@@ -374,8 +379,8 @@ css注释：
 块内连续的空格会被合并为一个
 
 - ` nbsp`字符：不断行的空白格，该空格占据的宽度受字体影响。
-- ` ensp`字符：相当全角状态键入半个“空格”键（半个汉字的宽度）。
-- ` emsp`字符：相当全角状态键入“空格”键（1个汉字的宽度）。
+- `ensp`字符：相当全角状态键入半个“空格”键（半个汉字的宽度）。
+- `emsp`字符：相当全角状态键入“空格”键（1个汉字的宽度）。
 
 #### 水平分割线
 
@@ -391,7 +396,7 @@ css注释：
 | :------------------------------ | :------------------------------------------- |
 |`<img src="picture.jpg"> `       | picture.jpg 位于与当前网页相同的文件夹       |
 | `<img src="images/picture.jpg"> ` | picture.jpg 位于当前文件夹的 images 文件夹中 |
-| `<img src="/images/picture.jpg">` | picture.jpg 当前站点根目录的 images 文件夹中 |
+| `<img src="/images/picture.jpg">` | picture.jpg 当前站点**根目录**的 images 文件夹中 |
 | `<img src="../picture.jpg"> `     | picture.jpg 位于当前文件夹的上一级文件夹中   |
 
 
@@ -424,91 +429,6 @@ css注释：
 
 
 #### 文本格式化
-
-<html>
-
-<body>
-
-<h1 style="text-align:center">This is a heading</h1>
-
-<b>This text is bold</b>
-
-<br />
-
-<strong>This text is strong</strong>
-
-<br />
-
-<big>This text is big</big>
-
-<br />
-
-<em>This text is emphasized</em>
-
-<br />
-
-<i>This text is italic</i>
-
-<br />
-
-<small>This text is small</small>
-
-<br />
-
-This text contains
-<sub>subscript</sub>
-
-<br />
-
-This text contains
-<sup>superscript</sup>
-
-</body>
-</html>
-
-```html
-<html>
-
-<body>
-
-<h1 style="text-align:center">This is a heading</h1>
-    
-<b>This text is bold</b>
-
-<br />
-
-<strong>This text is strong</strong>
-
-<br />
-
-<big>This text is big</big>
-
-<br />
-
-<em>This text is emphasized</em>
-
-<br />
-
-<i>This text is italic</i>
-
-<br />
-
-<small>This text is small</small>
-
-<br />
-
-This text contains
-<sub>subscript</sub>
-
-<br />
-
-This text contains
-<sup>superscript</sup>
-
-</body>
-</html>
-
-```
 
 
 
@@ -549,6 +469,40 @@ This text contains
 ```
 
 
+
+<h1 style="text-align:center">This is a heading</h1>
+
+<b>This text is bold</b>
+
+<br />
+
+<strong>This text is strong</strong>
+
+<br />
+
+<big>This text is big</big>
+
+<br />
+
+<em>This text is emphasized</em>
+
+<br />
+
+<i>This text is italic</i>
+
+<br />
+
+<small>This text is small</small>
+
+<br />
+
+This text contains
+<sub>subscript</sub>
+
+<br />
+
+This text contains
+<sup>superscript
 
 ### 文档的基本组成部分
 
@@ -604,7 +558,7 @@ This text contains
 ```
 
 ```css
-# CSS 背景图片
+<-- css
 p {
     background-image:
         url("url-to-img.png");
@@ -675,7 +629,7 @@ p {
 <!--B站嵌入代码	修改url和参数 
 	&highquality=1 默认高画质
 	&danmaku=0	关闭弹幕
-	sandbox阻止弹出页面
+	sandbox安全&阻止弹出页面
 -->
 ```
 
@@ -716,6 +670,16 @@ SVG:描述矢量图形的XML语言
   <circle cx="150" cy="100" r="90" fill="blue" />
 </svg>
 ```
+
+<svg version="1.1"
+     baseProfile="full"
+     width="300" height="200"
+     xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="black" />
+  <circle cx="150" cy="100" r="90" fill="blue" />
+</svg>
+
+
 
 ```html
 # 链接.svg图
@@ -880,10 +844,10 @@ Copyright ? W3Schools.com
 
 ```html
 <select name="cars">
-<option value="volvo">Volvo</option>
-<option value="saab">Saab</option>
-<option value="fiat">Fiat</option>
-<option value="audi">Audi</option>
+    <option value="volvo">Volvo</option>
+    <option value="saab">Saab</option>
+    <option value="fiat">Fiat</option>
+    <option value="audi">Audi</option>
 </select>
 ```
 
@@ -911,14 +875,14 @@ Copyright ? W3Schools.com
 
 ```html
 <form action="action_page.php">
-<input list="browsers">
-<datalist id="browsers">
-   <option value="Internet Explorer">
-   <option value="Firefox">
-   <option value="Chrome">
-   <option value="Opera">
-   <option value="Safari">
-</datalist> 
+    <input list="browsers">
+    <datalist id="browsers">
+       <option value="Internet Explorer">
+       <option value="Firefox">
+       <option value="Chrome">
+       <option value="Opera">
+       <option value="Safari">
+    </datalist> 
 </form>
 ```
 
@@ -930,11 +894,11 @@ Copyright ? W3Schools.com
 
 ```html
 <form>
- First name:<br>
-<input type="text" name="firstname">
-<br>
- Last name:<br>
-<input type="text" name="lastname">
+     First name:<br>
+    <input type="text" name="firstname">
+    <br>
+     Last name:<br>
+    <input type="text" name="lastname">
 </form> 
 ```
 
@@ -944,11 +908,11 @@ Copyright ? W3Schools.com
 
 ```html
 <form>
- User name:<br>
-<input type="text" name="username">
-<br>
- User password:<br>
-<input type="password" name="psw">
+     User name:<br>
+    <input type="text" name="username">
+    <br>
+     User password:<br>
+    <input type="password" name="psw">
 </form> 
 ```
 
@@ -966,13 +930,13 @@ Copyright ? W3Schools.com
 
 ```html
 <form action="action_page.php">
-First name:<br>
-<input type="text" name="firstname" value="Mickey">
-<br>
-Last name:<br>
-<input type="text" name="lastname" value="Mouse">
-<br><br>
-<input type="submit" value="Submit">
+    First name:<br>
+    <input type="text" name="firstname" value="Mickey">
+    <br>
+    Last name:<br>
+    <input type="text" name="lastname" value="Mouse">
+    <br><br>
+    <input type="submit" value="Submit">
 </form> 
 ```
 
@@ -980,9 +944,11 @@ Last name:<br>
 
 ```html
 <form>
-<input type="radio" name="sex" value="male" checked>Male
-<br>
-<input type="radio" name="sex" value="female">Female
+	<input type="radio" name="sex" value="male" checked>Male
+	<br>
+	<input type="radio" name="sex" value="male" checked="BoolLean">Male 
+	<br>    
+	<input type="radio" name="sex" value="female">Female
 </form> 
 ```
 
@@ -990,17 +956,15 @@ Last name:<br>
 
 ```html
 <form>
-<input type="checkbox" name="vehicle" value="Bike">I have a bike
-<br>
-<input type="checkbox" name="vehicle" value="Car">I have a car 
+	<input type="checkbox" name="vehicle" value="Bike">I have a bike
+	<br>
+	<input type="checkbox" name="vehicle" value="Car">I have a car 
 </form> 
 ```
 
 
 
 ##### number
-
-![QQ截图20220524105234](HTML.assets/QQ截图20220524105234.png)
 
 | 属性      | 描述                               |
 | :-------- | :--------------------------------- |

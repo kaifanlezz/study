@@ -1017,3 +1017,27 @@ height:200px;
 
 - [谷歌 Closure Complier](https://closure-complier.appspot.com/home)
 - [雅虎 YUI Compressor](http://developer.yahoo.com/yui/compressor)
+
+
+
+### 本地存储
+
+```js
+//写 键值对（字符串）
+localStorage.saveItem("key","value")
+//对象：
+JSON.stringfy(object)
+//读取
+localStorage.getItem("key")
+//删除
+localStorage.removeItem("key")
+//清空
+localStorage.clear()
+
+
+-->>localStorage
+//清理本地缓存后xiao'shi
+-->>sessionStorage
+//关闭窗口后自动消失
+```
+

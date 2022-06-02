@@ -2,7 +2,7 @@
 
 Document Object Model
 
-![DOM HTML 树](DOM.assets/ct_htmltree.gif)
+![DOM HTML 树](mdAssets/DOM.asset/ct_htmltree.gif)
 
 ## 方法
 
@@ -53,34 +53,34 @@ var x = document.querySelectorAll("p.intro");
 
 ### 查找属性
 
-| 查找                         | 描述                                        | DOM  |
-| :--------------------------- | :------------------------------------------ | :--- |
-| document.anchors             | 返回拥有 name 属性的所有 <a> 元素。         | 1    |
-| document.applets             | 返回所有 <applet> 元素（HTML5 不建议使用）  | 1    |
-| document.baseURI             | 返回文档的绝对基准 URI                      | 3    |
-| document.body                | 返回 <body> 元素                            | 1    |
-| document.cookie              | 返回文档的 cookie                           | 1    |
-| document.doctype             | 返回文档的 doctype                          | 3    |
-| document.documentElement     | 返回 <html> 元素                            | 3    |
-| document.documentMode        | 返回浏览器使用的模式                        | 3    |
-| document.documentURI         | 返回文档的 URI                              | 3    |
-| document.domain              | 返回文档服务器的域名                        | 1    |
-| document.domConfig           | 废弃。返回 DOM 配置                         | 3    |
-| document.embeds              | 返回所有 <embed> 元素                       | 3    |
-| document.forms               | 返回所有 <form> 元素                        | 1    |
-| document.head                | 返回 <head> 元素                            | 3    |
-| document.images              | 返回所有 <img> 元素                         | 1    |
-| document.implementation      | 返回 DOM 实现                               | 3    |
-| document.inputEncoding       | 返回文档的编码（字符集）                    | 3    |
-| document.lastModified        | 返回文档更新的日期和时间                    | 3    |
-| document.links               | 返回拥有 href 属性的所有 <area> 和 <a> 元素 | 1    |
-| document.readyState          | 返回文档的（加载）状态                      | 3    |
-| document.referrer            | 返回引用的 URI（链接文档）                  | 1    |
-| document.scripts             | 返回所有 <script> 元素                      | 3    |
-| document.strictErrorChecking | 返回是否强制执行错误检查                    | 3    |
-| document.title               | 返回 <title> 元素                           | 1    |
-| document.URL                 | 返回文档的完整 URL                          | 1    |
-| element.nextSibling          | 元素的下一个元素                            |      |
+| 查找                         | 描述                                                         | DOM  |
+| :--------------------------- | :----------------------------------------------------------- | :--- |
+| document.anchors             | @media screen and (min-width: 480px) {  #leftsidebar {width: 200px; float: left;}  #main {margin-left: 216px;}}css | 1    |
+| document.applets             | 返回所有 <applet> 元素（HTML5 不建议使用）                   | 1    |
+| document.baseURI             | 返回文档的绝对基准 URI                                       | 3    |
+| document.body                | 返回 <body> 元素                                             | 1    |
+| document.cookie              | 返回文档的 cookie                                            | 1    |
+| document.doctype             | 返回文档的 doctype                                           | 3    |
+| document.documentElement     | 返回 <html> 元素                                             | 3    |
+| document.documentMode        | 返回浏览器使用的模式                                         | 3    |
+| document.documentURI         | 返回文档的 URI                                               | 3    |
+| document.domain              | 返回文档服务器的域名                                         | 1    |
+| document.domConfig           | 废弃。返回 DOM 配置                                          | 3    |
+| document.embeds              | 返回所有 <embed> 元素                                        | 3    |
+| document.forms               | 返回所有 <form> 元素                                         | 1    |
+| document.head                | 返回 <head> 元素                                             | 3    |
+| document.images              | 返回所有 <img> 元素                                          | 1    |
+| document.implementation      | 返回 DOM 实现                                                | 3    |
+| document.inputEncoding       | 返回文档的编码（字符集）                                     | 3    |
+| document.lastModified        | 返回文档更新的日期和时间                                     | 3    |
+| document.links               | 返回拥有 href 属性的所有 <area> 和 <a> 元素                  | 1    |
+| document.readyState          | 返回文档的（加载）状态                                       | 3    |
+| document.referrer            | 返回引用的 URI（链接文档）                                   | 1    |
+| document.scripts             | 返回所有 <script> 元素                                       | 3    |
+| document.strictErrorChecking | 返回是否强制执行错误检查                                     | 3    |
+| document.title               | 返回 <title> 元素                                            | 1    |
+| document.URL                 | 返回文档的完整 URL                                           | 1    |
+| element.nextSibling          | 元素的下一个元素                                             |      |
 
 ### 可访问的对象
 
