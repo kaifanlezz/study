@@ -24,16 +24,50 @@ x = 1; <!-- x = 2;
 
 ### 变量声明
 
-`var` 声明变量相对于`let`有两点主要区别：
+`var` 声明变量
+1. 函数级作用域
+2. 声明提升--到作用域顶部
+3. 在全局中声明的变量会成为`window`对象的`Attribute`
+`let` 声明变量
+1. 块级作用域--通常是{}
+2. 声明不提升
+`const` 声明变量
+1. 声明时必须初始化变量
+2. 不能自增--无法迭代
 
-1. 变量没有**块作用域**，它们在最小函数级可见；
-2. 变量声明在函数开头处理。(提升)
+### 数据类型
+ES6 简单数据类型：	原始值
+
+|类型		|						|
+|--			|--						|
+|`Undefined`|声明了但未初始化的变量	|
+|`Null`		|空对象指针				|
+|`Boolean`	|`true``false`小写！		|
+|`Number`	|						|
+|`String`	|						|
+|`Symbol`	|符号(ES6)				|
 
 
+复杂数据类型:	引用值
+`Object`
+> typeof(null)=='object'	被认作对空对象的引用
 
+#### Number
+- N/A 不存在
+- NAN Not a number
+- Infinity 无穷
+
+`isNaN(someThing)	是否不是数值
+
+##### 转换
+`Number()`
+`parseInt()`
+`parseFloat()`
 ### 字符串
-
-#### 转义
+`''`	`""`	
+``模板字面量，反引号，可换行，应用于
+ > `<template>`
+#### 转义字符
 
 - `\0` ：null（`\u0000`）
 - `\b` ：后退键（`\u0008`）
@@ -46,6 +80,10 @@ x = 1; <!-- x = 2;
 - `\"` ：双引号（`\u0022`）
 - `\\` ：反斜杠（`\u005C`）
 
+- \0onn  :八进制
+- \xnn   : 十六nn
+- \unnnn : 十六进制nnnn
+
 
 
 ```js
@@ -53,7 +91,9 @@ var f\u006F\u006F = 'abc';
 foo // "abc"
 ```
 
-
+#### 插值
+- `+`
+- ``{value}and{value2}``
 
 #### Base64转码
 
@@ -83,7 +123,7 @@ b64Decode('JUU0JUJEJUEwJUU1JUE1JUJE') // "你好"
 
 
 
-### 对象
+### Object
 
 简单说，对象就是一组“键值对”（key-value）的集合，是一种无序的复合数据集合。
 
@@ -105,7 +145,7 @@ var obj = {
 
 #### 读取对象的属性
 
-有两种方法，一种是使用点运算符，还有一种是使用方括号运算符。
+有两种方法，一种是使用点运算符`Object.Attr`，还有一种是使用方括号运算符`Object[Attri]`。
 
 ```js
 var obj = {
@@ -120,51 +160,26 @@ obj['p'] // "Hello World"
 
 JavaScript 允许属性的“后绑定”
 
-#### 查看对象的所有属性
+#### 查看对象的所有属性	key
 
 ```js
 Object.keys(obj);
 ```
 
-`Object.getOwnPropertyNames`方法与`Object.keys`类似，也是接受一个对象作为参数，返回一个数组，包含了该对象自身的所有属性名。但还返回不可枚举的属性名。
+`Object.getOwnPropertyNames`方法与`Object.keys`类似，也是接受一个对象作为参数，返回一个数组，包含了该对象自身的所有属性名。
+但还返回**不可枚举的属性名**。
 
 
 
-#### 删除属性
+#### 删除属性	delete
 
-`delete`命令用于删除对象的属性，删除成功后返回`true`。
+`Obj.delete()`命令用于删除对象的属性，删除成功后返回`true`。
 
 删除一个**不存在**的属性，`delete`不报错，而且返回`true`。
 
-只能删除对象本身的属性，无法删除继承的属性。
+只能删除对象本身的属性，无法删除**继承**的属性。
 
-#### 属性存在
-
-`in`
-
-#### 属性遍历
-
-- 会跳过不可遍历的属性。
-- 它不仅遍历对象自身的属性，还遍历继承的属性。
-
-```js
-for (var i in obj) {
-  console.log('键名：', i);
-  console.log('键值：', obj[i]);
-}
-```
-
-#### with
-
-操作同一个对象的多个属性时，提供一些书写的方便
-
-```js
-with (obj) {
-  p1 = 4;
-  p2 = 5;
-}
-```
-
+### 对象的一些方法
 **（1）对象属性模型的相关方法**
 
 - `Object.getOwnPropertyDescriptor()`：获取某个属性的描述对象。
@@ -185,24 +200,77 @@ with (obj) {
 - `Object.create()`：该方法可以指定原型对象和属性，返回一个新的对象。
 - `Object.getPrototypeOf()`：获取对象的`Prototype`对象。
 
-#### Object 的实例方法
-
+### Object 的实例方法
+- `JSON.stringfy(boj)`:返回**JSON**形式键值对
 - `Object.prototype.valueOf()`：返回当前对象对应的值。
-- `Object.prototype.toString()`：返回当前对象对应的字符串形式。
+- `Object.prototype.toString()`：返回当前对象对应的**字符串**形式。
 - `Object.prototype.toLocaleString()`：返回当前对象对应的本地字符串形式。
 - `Object.prototype.hasOwnProperty()`：判断某个属性是否为当前对象自身的属性，还是继承自原型对象的属性。
 - `Object.prototype.isPrototypeOf()`：判断当前对象是否为另一个对象的原型。
 - `Object.prototype.propertyIsEnumerable()`：判断某个属性是否可枚举。
 
 
+函数对象都有一个子对象 prototype对象，类是以函数的形式来定义的。prototype表示该函数的**原型**，也表示一个类的成员的集合。
 
-函数对象都有一个子对象 prototype对象，类是以函数的形式来定义的。prototype表示该函数的原型，也表示一个类的成员的集合。
+### 流控制语句
+#### 属性存在	in
+
+`in`
+
+#### 遍历	for
+
+- 会跳过不可遍历的属性。
+- 它不仅遍历对象自身的属性，还遍历继承的属性。
+
+```js
+for (var i in obj) {
+  console.log('键名：', i);
+  console.log('键值：', obj[i]);
+}
+```
+
+#### with	不推荐使用
+
+操作同一个对象的多个属性时，提供一些书写的方便
+
+```js
+with (obj) {
+  p1 = 4;
+  p2 = 5;
+}
+```
+
+#### if
+```js
+if (condition) statement1 else statement2
+```
+#### switch
+```js
+switch (expression) {
+	case value1:
+		statement
+		break;
+	case value2:
+	...
+}
+```
+为了避免不必要的判断，每一条最后都要加`break`除非需要多重判断
+#### label:
+可以被`break``continue``goto`引用
+```js
+{
+	start:for ... {
+		...
+		break start;
+	}
+}
+```
 
 ### 函数
 
 #### 声明
 
-1. 传统
+1. 传统	function
 
 ```js
 function print(s) {
@@ -212,10 +280,10 @@ function print(s) {
 
 2. 函数表达式
 
-#### 		匿名函数
+#### 匿名函数
 
 ```js
-var print = function() {
+const myFunc = function() {
   console.log(s);
 };
 ```
@@ -230,10 +298,10 @@ var print = function x(){
 
 3. 构造函数
 
-可以传递任意数量的参数给`Function`构造函数，只有最后一个**参数会被当做函数体**，如果只有一个参数，该参数就是函数体。
+可以传递任意数量的参数给`Function`构造函数，只有**最后一个参数**会被当做**函数体**，如果只有一个参数，该参数就是函数体。
 
 ```js
-var add = new Function(
+const add = new Function(
   'x',
   'y',
   'return x + y'  //body
@@ -254,9 +322,9 @@ function add(x, y) {
 
 ##### name
 
-```
+```js
 function f1() {}
-f1.name // "f1"
+f1.name				// "f1"
 ```
 
 ##### length
@@ -279,16 +347,23 @@ f1.name // "f1"
 
 - 可以省略
 
-- 如果一定要省略靠前的参数，只有显式传入`undefined`。
-
-- 函数参数如果是原始类型的值（数值、字符串、布尔值），传递方式是**传值传递**（passes by value）。这意味着，在函数体内修改参数值，不会影响到函数外部。
-- 如果函数参数是复合类型的值（数组、对象、其他函数），传递方式是**传址传递**（pass by reference）。也就是说，传入函数的原始值的地址，因此在函数内部修改参数，将会影响到原始值。
+* 如果一定要省略靠**前**的参数，只有显式传入`undefined`。
+- 剩余操作符 (rest operator) 
+```js
+function myFunc(para1,...expressions){
+	- 
+}
+```
+- 参数如果是原始类型的值（数值、字符串、布尔值）
+* 传递方式是**传值传递**（passes by value）。在函数体内修改参数值，不会影响到函数外部。
+- 参数是复合类型的值（数组、对象、其他函数）
+* 传递方式是**传址传递**（pass by reference）。传入函数的原始值的地址，因此在函数内部修改参数，将**会**影响到原始值。
 
 ##### arguments[]
 
-在函数体内部读取所有参数
+在函数体**内部**读取所有参数
 
-很像数组的对象，没有`slice forEach`方法
+很像数组的对象，没有`slice` `forEach`方法
 
 正常模式下，`arguments`对象可以在运行时修改。
 
@@ -311,37 +386,33 @@ f(1, 1) // 2
 
 #### 闭包
 
-需要得到函数内的局部变量。正常情况下，这是办不到的，只有通过变通方法才能实现。那就是在函数的**内部**，**再定义一个函数**。
+需要得到**函数内**的局部变量。正常情况下，这是办不到的，只有通过变通方法才能实现。那就是在函数的**内部**，**再定义一个函数**。
 
 闭包的最大用处有两个
 
-1. 可以读取外层函数内部的变量。
+1. 可以读取外层**函数内**部的变量。
 
 2. 让这些变量始终保持在内存中，即闭包可以使得它诞生环境一直存在。
 
-#### 立即调用的函数表达式（IIFE）
+#### IIFE
 
 Immediately-Invoked Function Expression
+立即调用的函数表达式
 
 根据 JavaScript 的语法，圆括号()跟在函数名之后，表示调用该函数。比如，print()就表示调用print函数。
-
-
-
-```js
-function(){ /* code */ }();
-```
 
 ```js
 (function(){ /* code */ }());
 ```
 
-一是不必为函数命名，避免了污染全局变量；二是 IIFE 内部形成了一个单独的作用域，可以封装一些外部无法读取的私有变量。
+一是不必为函数命名，避免了污染全局变量；
+二是 IIFE 内部形成了一个单独的作用域，可以封装一些外部无法读取的私有变量。
 
 
 
 #### eval
 
-`eval`命令接受一个字符串作为参数，并将这个字符串当作语句执行。
+`eval`命令接受一个字符串作为参数，并将这个字符串**当作语句**执行。
 
 如果参数字符串无法当作语句运行，那么就会报错。
 
@@ -374,7 +445,7 @@ eval('var a = 1;');
 ### 数组
 
 ```js
-var arr = ['a', 'b', 'c'];
+let arr = ['a', 'b', 'c'];
 ```
 
 只要是数组，就一定有`length`属性。该属性是一个动态的值，等于键名(序号)中的最大整数加上`1`。
@@ -481,10 +552,10 @@ function logArgs() {
 如果运算子是对象，会转为原始类型的值，再进行比较。
 
 对象转换成原始类型的值，算法是先调用`valueOf`方法；如果返回的还是对象，再接着调用`toString`方法
+##### `==`&`===`
+- 相等运算符（`==`）比较两个值是否相等，严格相等运算符（`===`）比较它们是否为“同一个值”。如果两个值不是同一**类型**，严格相等运算符（`===`）直接返回`false`，而相等运算符（`==`）会将它们转换成同一个类型，再用严格相等运算符进行比较。
 
-相等运算符（`==`）比较两个值是否相等，严格相等运算符（`===`）比较它们是否为“同一个值”。如果两个值不是同一类型，严格相等运算符（`===`）直接返回`false`，而相等运算符（`==`）会将它们转换成同一个类型，再用严格相等运算符进行比较。
-
-两个复合类型（对象、数组、函数）的数据比较时，不是比较它们的值是否相等，而是比较它们是否指向同一个地址。
+- 两个复合类型（对象、数组、函数）的数据比较时，不是比较它们的值是否相等，而是比较它们是否**指向同一个地址**。
 
 
 
@@ -813,7 +884,7 @@ try {
 
 
 
-### Console
+### Console	控制台
 
 ```js
 console.log(' %s + %s = %s', 1, 1, 2)
@@ -851,7 +922,7 @@ console.warn('Warning! Too few nodes (%d)', document.childNodes.length)
 
 - 对于某些复合类型的数据，`console.table`方法可以将其转为表格显示。
 
-- `count`方法用于计数，输出它被调用了多少次。可以接受一个字符串作为参数，作为标签，对执行次数进行分类。
+- `count`方法用于计数，输出它被调用了多少次数。可以接受一个字符串作为参数，作为标签，对执行**次数**进行分类。
 - `dir`方法用来对一个对象进行检查（inspect），并以易于阅读和打印的格式显示。
 
 ```js
@@ -862,7 +933,7 @@ console.dir({f1: 'foo', f2: 'bar'})
 //   __proto__: Object
 ```
 
-- `dirxml`方法主要用于以目录树的形式，显示 DOM 节点。
+- `dirxml`方法主要用于以**目录树**的形式，显示 DOM 节点。
 - `console.assert`方法主要用于程序运行过程中，进行条件判断，如果不满足条件，就显示一个错误，但不会中断程序执行。这样就相当于提示用户，内部状态不正确。
 
 ```js
@@ -879,7 +950,7 @@ try {
 }
 ```
 
-- console.time()，console.timeEnd()
+- `console.time()，console.timeEnd()`
 
 ```
 console.time('Array initialize');
@@ -901,7 +972,7 @@ console.timeEnd('Array initialize');
 
 
 
-#### API
+#### API	$
 
 （1）`$_`
 
@@ -913,7 +984,7 @@ console.timeEnd('Array initialize');
 
 （3）`$(selector)`
 
-`$(selector)`返回第一个匹配的元素，等同于`document.querySelector()`。注意，如果页面脚本对`$`有定义，则会覆盖原始的定义。比如，页面里面有 jQuery，控制台执行`$(selector)`就会采用 jQuery 的实现，返回一个数组。
+`$(selector)`返回**第一个匹配**的元素，等同于`document.querySelector()`。注意，如果页面脚本对`$`有定义，则会覆盖原始的定义。比如，页面里面有 jQuery，控制台执行`$(selector)`就会采用 jQuery 的实现，返回一个数组。
 
 （4）`$$(selector)`
 

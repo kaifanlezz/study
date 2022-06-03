@@ -4,6 +4,39 @@ Vue (读音 /vjuː/，类似于 **view**) 是一套用于构建用户界面的**
 
 ![VUE](mdAssets/Vue.js.asset/VUE.webp)
 
+
+
+
+
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```npm
+npm run serve
+```
+
+### Compiles and minifies for production
+```powershell
+npm run build
+```
+
+### Lints and fixes files
+```bash
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+
+
+
+
+
 ## MVVM
 
 vue一定程度上参考了mvvm
