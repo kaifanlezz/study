@@ -7,24 +7,23 @@ Vue (读音 /vjuː/，类似于 **view**) 是一套用于构建用户界面的**
 
 
 
-
 ## Project setup
 ```
 npm install
 ```
 
 ### Compiles and hot-reloads for development
-```npm
+```
 npm run serve
 ```
 
 ### Compiles and minifies for production
-```powershell
+```
 npm run build
 ```
 
 ### Lints and fixes files
-```bash
+```
 npm run lint
 ```
 
@@ -101,7 +100,6 @@ var app = new Vue({
 
 ### 绑定
 
-### 
 
 ```js
 var app = new Vue({
@@ -117,15 +115,11 @@ app.$mount("root")	//挂载
 
 
 
-
 ### 指令
 
 指令带有前缀 `v-`，以表示它们是 Vue 提供的特殊 attribute。它们会在渲染的 DOM 上应用特殊的响应式行为。
 
 指令的职责是，当表达式的值改变时，将其产生的连带影响，响应式地作用于 DOM。
-
-
-
 
 
 
@@ -157,7 +151,7 @@ new Vue({
 
 <img src="mdAssets/Vue.js.asset/生命周期-16540495143702.png" alt="生命周期" style="zoom:67%;" />
 
-### Template 模板
+### template 模板
 
 允许开发者声明式地将 DOM 绑定至底层 Vue 实例的数据。所有 Vue.js 的模板都是合法的 HTML，所以能被遵循规范的浏览器和 HTML 解析器解析。
 
@@ -194,7 +188,8 @@ new Vue({
 
 #### v-html 可解析html
 
-双大括号会将数据解释为普通文本，而非 HTML 代码。为了输出真正的 HTML，你需要使用 [`v-html` 指令](https://cn.vuejs.org/v2/api/#v-html)：
+双大括号会将数据解释为普通文本，而非 HTML 代码。
+为了输出真正的 HTML，需要使用 [`v-html` 指令](https://cn.vuejs.org/v2/api/#v-html)：
 
 ```html
 <p>Using mustaches: {{ rawHtml }}</p>
@@ -284,7 +279,7 @@ var app5 = new Vue({
 
 #### v-pre
 
-跳过所在节点的vue解析渲染，维持原html悬念然方法，跳过-->>加速编译
+跳过所在节点的vue解析渲染，维持原html渲染方法，跳过-->>加速编译
 
 
 
@@ -342,7 +337,8 @@ Vue.instra('fbind',{
 
 
 
-### 计算属性 -- 模板内的复杂逻辑
+### 计算属性 
+模板内的复杂逻辑
 
 ```html
 <div id="example">
@@ -387,7 +383,8 @@ computed:{
 
 性能优于方法
 
-**计算属性是基于它们的响应式依赖进行缓存的**。只在相关响应式依赖发生改变时它们才会重新求值。这就意味着只要 `message` 还没有发生改变，多次访问 `reversedMessage` 计算属性会立即返回之前的计算结果，而不必再次执行函数。
+**计算属性是基于它们的响应式依赖进行缓存的**。只在相关响应式依赖发生改变时它们才会重新求值。
+只要 `message` 还没有发生改变，多次访问 `reversedMessage` 计算属性会立即返回之前的计算结果，而不必再次执行函数。
 
 ​          1.定义：要用的属性不存在，要通过已有属性计算得来。
 
@@ -512,8 +509,8 @@ new Vue({
 
 
 
-### JS--`Object.defineProperty()`
 
+### 事件监听
 #### getter()
 
 #### setter()
@@ -695,8 +692,7 @@ key是虚拟DOM对象的标识，当数据发生变化时，Vue会根据【新�
 
 4. 开发中如何选择key?:
     1.最好使用每条数据的唯一标识作为key, 比如id、手机号、身份证号、学号等唯一值。
-    2.如果不存在对数据的逆序添加、逆序删除等破坏顺序操作，仅用于渲染列表用于展示，
-        使用index作为key是没有问题的。
+    2.如果不存在对数据的逆序添加、逆序删除等破坏顺序操作，仅用于渲染列表用于展示，使用index作为key是没有问题的。
 
 #### 列表过滤
 

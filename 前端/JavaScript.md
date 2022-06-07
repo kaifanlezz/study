@@ -52,21 +52,32 @@ ES6 简单数据类型：	原始值
 `Object`
 > typeof(null)=='object'	被认作对空对象的引用
 
-#### Number
+### Number
 - N/A 不存在
 - NAN Not a number
 - Infinity 无穷
 
-`isNaN(someThing)	是否不是数值
-
-##### 转换
+`isNaN(s`omeThing)`	是否不是数值
+`num.tofixed(2)`四舍五入到（指定小数位数）
+`num.toExponential(1)`科学计数法（结果中小数位数）
+#### 转换
 `Number()`
 `parseInt()`
 `parseFloat()`
+### symbol
+ES6 没有字面量，用作属性名
+Symbol()没有重复的值,但Symbol.for()传入相同字符串时都会得到相同的值。
+`s = Symbol([para])`
+如果带参数，`s.toString()`会展示参数
 ### 字符串
 `''`	`""`	
+一个字符有16个码元 2Bit
+UTF-16	UCS-2
 ``模板字面量，反引号，可换行，应用于
  > `<template>`
+
+`.trim`清除前后空格
+`.repeat(次)`
 #### 转义字符
 
 - `\0` ：null（`\u0000`）
@@ -143,6 +154,22 @@ var obj = {
 
 只局限于对象，如果两个变量指向同一个原始类型的值。那么，变量这时都是值的拷贝。
 
+#### 创建对象
+```js
+// 1. 字面量
+let empty = {};
+// 2. new
+let a = new Object();
+let b = new Array();
+let c = new Date(); //当前时间的日期对象
+let d = new Map();	//键值对映射
+// 3. Object.create()
+Object.create(Object.prototype)	//第一个参数作为新对象的原型
+
+```
+
+#### 原型 prototyoe
+通过构造函数创建的“实例”继承这个给原型对象的属性
 #### 读取对象的属性
 
 有两种方法，一种是使用点运算符`Object.Attr`，还有一种是使用方括号运算符`Object[Attri]`。
@@ -158,7 +185,7 @@ obj['p'] // "Hello World"
 
 数值键名不能使用点运算符（因为会被当成小数点），只能使用方括号运算符。
 
-JavaScript 允许属性的“后绑定”
+JavaScript 允许属性的“后绑定”，不存在的属性`Undefined`
 
 #### 查看对象的所有属性	key
 
@@ -175,11 +202,11 @@ Object.keys(obj);
 
 `Obj.delete()`命令用于删除对象的属性，删除成功后返回`true`。
 
-删除一个**不存在**的属性，`delete`不报错，而且返回`true`。
+- 删除一个**不存在**的属性，`delete`不报错，而且返回`true`。
+- 无法删除`configurable:false的`属性
+- 无法删除**继承**的属性，继承的只能在原型对象上删除。
 
-只能删除对象本身的属性，无法删除**继承**的属性。
-
-### 对象的一些方法
+#### 对象的一些方法
 **（1）对象属性模型的相关方法**
 
 - `Object.getOwnPropertyDescriptor()`：获取某个属性的描述对象。
@@ -200,7 +227,7 @@ Object.keys(obj);
 - `Object.create()`：该方法可以指定原型对象和属性，返回一个新的对象。
 - `Object.getPrototypeOf()`：获取对象的`Prototype`对象。
 
-### Object 的实例方法
+#### Object 的实例方法
 - `JSON.stringfy(boj)`:返回**JSON**形式键值对
 - `Object.prototype.valueOf()`：返回当前对象对应的值。
 - `Object.prototype.toString()`：返回当前对象对应的**字符串**形式。
@@ -211,11 +238,25 @@ Object.keys(obj);
 
 
 函数对象都有一个子对象 prototype对象，类是以函数的形式来定义的。prototype表示该函数的**原型**，也表示一个类的成员的集合。
-
-### 流控制语句
 #### 属性存在	in
 
 `in`
+`o.x != undefined`
+`o.hasOwnProperty('x')`
+`o.propertyIsEnumerable`	//判断 可迭代属性
+
+#### 枚举顺序
+1. 名字为非负整数的字符串	按数值从小到大
+2. 字符串名字，负数和浮点数	按添加到对象的先后顺序
+3. 符号对象	先后顺序
+
+#### 复制属性
+`Object.assign(o1,o2)`
+ES6 修改并返回第一个参数，后续参数为属性来源对象，将他们的可枚举自有属性复制到目标对象。 //可覆盖
+
+`o = {...default,...o}`
+ES2018 拓展操作符
+### 流控制语句
 
 #### 遍历	for
 
@@ -228,6 +269,7 @@ for (var i in obj) {
   console.log('键值：', obj[i]);
 }
 ```
+
 
 #### with	不推荐使用
 
@@ -358,7 +400,7 @@ function myFunc(para1,...expressions){
 * 传递方式是**传值传递**（passes by value）。在函数体内修改参数值，不会影响到函数外部。
 - 参数是复合类型的值（数组、对象、其他函数）
 * 传递方式是**传址传递**（pass by reference）。传入函数的原始值的地址，因此在函数内部修改参数，将**会**影响到原始值。
-
+- ES6所有参数都是复制（传值）
 ##### arguments[]
 
 在函数体**内部**读取所有参数
@@ -1050,7 +1092,7 @@ unmonitorEvents($0, 'mousemove');
 
 
 
-### 时间
+### 计时器
 
 `setTimeout("name",interval)`
 
@@ -1060,8 +1102,18 @@ unmonitorEvents($0, 'mousemove');
 
 `parseInt(element.style.yop)`将字符串"20px"转化为20(int)
 
+### 时间日期 Date
+UTC	Universal Time Coordinated	协调世界时
+```js
+let now = new Date()
+```
+Moment.js	Day.js库
 
-
+### RegExp 正则表达式
+```js
+let pattern1 = "/pattern/flags;
+let matches = pattern.exec(text);	//表达式.exec(检索文本)
+```
 ### 动画
 
 再一定时间间隔下重设元素的定位（top right）并检查是否到达终点
