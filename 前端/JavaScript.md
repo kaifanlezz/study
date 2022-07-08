@@ -52,6 +52,18 @@ ES6 简单数据类型：	原始值
 `Object`
 > typeof(null)=='object'	被认作对空对象的引用
 
+#### 布尔值
+True:
+- undefined 
+- null 
+- 数字0 
+- 空字符串''
+
+False:
+- []
+- {}
+- -1
+- -0
 ### Number
 - N/A 不存在
 - NAN Not a number
@@ -611,7 +623,7 @@ a.some(x => x<10)	//存在
 ```
 ##### 归并	 注入 折叠 reduce	reduceRight
 ```js
-a.reduce((x,y) => x+y,0)	//第二个参数市初始值，缺省则初始为第一个
+a.reduce((x,y) => x+y,0)	//第二个参数是初始值，缺省则初始为第一个
 ```
 
 ##### 打平嵌套

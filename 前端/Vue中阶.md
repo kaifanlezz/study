@@ -454,6 +454,7 @@ module.exports = {
    ```
 
 ## Vuex
+![Vuex](Vue中阶_files/2.png)
 
 ### 1.概念
 
@@ -506,7 +507,7 @@ module.exports = {
    })
    ```
 
-###    4.基本使用
+### 4.基本使用
 
 1. 初始化数据、配置```actions```、配置```mutations```，操作文件```store.js```
 
@@ -699,7 +700,7 @@ module.exports = {
    ...mapMutations('countAbout',{increment:'JIA',decrement:'JIAN'}),
    ```
 
- ## 路由
+ ## router
 
 1. 理解： 一个路由（route）就是一组映射关系（key - value），多个路由需要路由器（router）进行管理。
 2. 前端路由：key是路径，value是组件。
